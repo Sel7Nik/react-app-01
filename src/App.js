@@ -1,4 +1,5 @@
 // import React from 'react';
+import Abb from './Abb';
 import './App.css';
 
 // function App() {
@@ -13,20 +14,10 @@ import './App.css';
       <li className="react__item">list 04</li>
     </ul>
     </div>
-      <Abb></Abb>
+<Abb/>
     </>
   
 }
-  const  Abb = () => {
-  return  <>
-            <div className="Abb">
-            <h1 className="h1" >Abb</h1> 
-            <p>second compponent</p>
-            </div>
-          </>
-}
-
-
-
+ 
 
 export default App;
