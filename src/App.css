@@ -10,6 +10,7 @@
 .app-wrapper {
   width: 1220px;
   padding: 0 10px;
+  margin: 0 auto;
   display: grid;
   grid-template-areas: "h h""m c";
   grid-template-rows: 80px 10fr;
