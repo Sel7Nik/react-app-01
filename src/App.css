@@ -2,15 +2,40 @@
   text-align: center;
 }
 
-.react__list {
+.header__img {
+  height: 50px;
+}
+
+
+.app-wrapper {
+  width: 1220px;
+  padding: 0 10px;
+  display: grid;
+  grid-template-areas: "h h""m c";
+  grid-template-rows: 80px 10fr;
+  grid-template-columns: 2fr 10fr;
+  grid-gap: 10px;
+}
+
+.header {
+  grid-area: h;
+  background-color: rgb(150, 250, 150);
+
+}
+
+.menu {
+  grid-area: m;
+}
+
+.content {
+  grid-area: c;
+}
+
+.content__img {
+  height: 85px;
+  width: 100%;
+}
+
+.list {
   list-style: none;
-}
-
-.Abb {
-  margin: 0;
-}
-
-.h1,
-p {
-  margin: 0;
 }
