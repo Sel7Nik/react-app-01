@@ -1,5 +1,5 @@
 import React from 'react';
-
+import s from './Profile.module.css';
 const Profile = () => {
   return (
     <section className="content">
@@ -12,9 +12,9 @@ const Profile = () => {
       <div className="content__description">description</div>
       <div className="content__posts">
         My posts
-        <div className="content__posts-item">
-          <div className="post-item">post 1</div>
-          <div className="post-item">post 2</div>
+        <div className={s.posts}>
+          <div className={s.item}>post 1</div>
+          <div className={s.item}>post 2</div>
         </div>
       </div>
     </section>

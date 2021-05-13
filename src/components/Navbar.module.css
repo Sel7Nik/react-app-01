@@ -1,0 +1,12 @@
+.menu {
+  grid-area: m;
+}
+
+.list {
+  list-style: none;
+}
+
+.item,
+.link {
+  color: red;
+}
