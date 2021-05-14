@@ -1,7 +1,7 @@
 import React from 'react';
 
 import s from './Post.module.css';
-const Post = () => {
+const Post = (p) => {
   return (
     <div className={s.posts}>
       <div className={s.avatar}>
@@ -11,7 +11,9 @@ const Post = () => {
           alt=""
         />
       </div>
-      <div className={s.item}>post 1</div>
+      <div className={s.item}>
+        {p.name}, {p.age} '<br />' {p.message}
+      </div>
     </div>
   );
 };
