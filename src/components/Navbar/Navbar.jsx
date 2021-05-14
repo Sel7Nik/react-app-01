@@ -5,14 +5,14 @@ const Navbar = () => {
     <nav className={s.menu}>
       <ul className={s.list}>
         <li className={s.item}>
-          <a className={s.link} href="#c">
+          <a className={s.link} href="/profile">
             Главная
           </a>
         </li>
         {/* <li className={s.item}> */}
         <li className={`${s.item} ${s.active}`}>
-          <a className={`${s.link} ${s.active}`} href="#c">
-            О нас
+          <a className={`${s.link} ${s.active}`} href="/dialogs">
+            Сообщения
           </a>
         </li>
         <li className={s.item}>
