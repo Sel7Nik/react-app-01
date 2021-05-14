@@ -9,8 +9,9 @@ const Navbar = () => {
             Главная
           </a>
         </li>
-        <li className={s.item}>
-          <a className={s.link} href="#c">
+        {/* <li className={s.item}> */}
+        <li className={`${s.item} ${s.active}`}>
+          <a className={`${s.link} ${s.active}`} href="#c">
             О нас
           </a>
         </li>

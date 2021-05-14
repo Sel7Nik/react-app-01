@@ -1,5 +1,6 @@
 .menu {
   grid-area: m;
+  background-color: greenyellow;
 }
 
 .list {
@@ -8,5 +9,10 @@
 
 .item,
 .link {
+  color: green;
+}
+
+.item.active,
+.link.active {
   color: red;
 }
