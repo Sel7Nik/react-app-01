@@ -12,7 +12,7 @@ const Post = (p) => {
         />
       </div>
       <div className={s.item}>
-        {p.name}, {p.age} '<br />' {p.message}
+        {p.name}, {p.age} '<br />' {p.message} '<br />' нравится {p.likeCount}
       </div>
     </div>
   );
