@@ -2,3 +2,8 @@
   grid-area: c;
   background-color: cornflowerblue;
 }
+
+.img {
+  height: 150px;
+  width: 100%;
+}

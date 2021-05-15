@@ -1,0 +1,21 @@
+{
+  "material-icon-theme.activeIconPack": "react_redux",
+  "workbench.colorCustomizations": {
+    "[Material Theme Comm]": {
+        "textMateRules": [
+            {
+                "scope": [
+                    "comment",
+
+                    "comment punctuation.definition.comment"
+                ],
+                "settings": {
+                    "foreground": "#FF0000",
+                    "comments": "#229977",
+                }
+            }
+        ]
+    },
+  },
+  "editor.tokenColorCustomizations": null
+}
