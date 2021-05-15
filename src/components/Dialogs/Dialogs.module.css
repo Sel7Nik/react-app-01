@@ -7,3 +7,28 @@
   height: 50px;
   width: 50px;
 }
+
+.dialogs{
+  display: grid;
+  grid-template-columns: 2fr 10fr;
+}
+
+.dialogs__items{
+  padding: 10px;
+}
+
+.dialogs__items .active{
+  color: gold;
+}
+
+.dialog{
+
+}
+
+.messanges{
+padding: 10px;
+}
+
+.message{
+
+}
