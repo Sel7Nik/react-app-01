@@ -16,17 +16,17 @@ const Navbar = () => {
           </a>
         </li>
         <li className={s.item}>
-          <a className={s.link} href="#c">
+          <a className={s.link} href="/News">
             Наши дела
           </a>
         </li>
         <li className={s.item}>
-          <a className={s.link} href="#c">
+          <a className={s.link} href="/Music">
             Наш отдых
           </a>
         </li>
         <li className={s.item}>
-          <a className={s.link} href="#c">
+          <a className={s.link} href="/Settings">
             Контакты
           </a>
         </li>
