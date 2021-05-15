@@ -14,7 +14,7 @@
 }
 
 .dialogs__items{
-  padding: 10px;
+  padding: 20px;
 }
 
 .dialogs__items .active{
@@ -22,13 +22,20 @@
 }
 
 .dialog{
-
+  padding: 5px;
+}
+.dialog a{
+  text-decoration: none;
+  color:black;
 }
 
 .messanges{
-padding: 10px;
+padding: 20px;
+
+
 }
 
 .message{
+  padding: 5px;
 
 }
