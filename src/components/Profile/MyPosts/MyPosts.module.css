@@ -1,13 +1,15 @@
-.img {
-  max-width: 80px;
+.postsBlock{
   padding: 15px;
 }
 
-.posts button {
+.postsBlock button {
   display: block;
   padding: 10px 20px;
   margin: 10px;
   text-transform: uppercase;
   border-radius: 8px;
   cursor: pointer;
+}
+.posts{
+  margin-top: 30px;
 }

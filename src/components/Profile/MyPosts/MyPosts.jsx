@@ -1,11 +1,12 @@
 import React from 'react';
 import Post from './Post/Post.jsx';
 import s from './MyPosts.module.css';
+
 const MyPosts = () => {
   return (
     <>
-      <div className={s.content}>
-        My posts
+      <div className={s.postsBlock}>
+        <h3>My posts</h3>
         <div>
           <textarea></textarea>
           <button>Add post</button>
