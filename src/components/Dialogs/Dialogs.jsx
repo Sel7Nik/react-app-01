@@ -38,29 +38,20 @@ const Dialogs = (p) => {
   ];
 
   let dD = dialogsData;
-  let ms = messagesData;
+  let mD = messagesData;
+
+  let dialogsElements = dD.map((n) => <DialogItem name={n.name} id={n.id} />);
+  let messagesElements = mD.map((m) => (
+    <Message message={m.message} id={m.id} />
+  ));
+
+  let dE = dialogsElements;
+  let mE = messagesElements;
 
   return (
     <div className={s.dialogs}>
-      <div className={s.dialogs__items}>
-        {/* <div className={s.dialog + ' ' + s.active}>
-          <NavLink to="/dialogs/1">DimDimitch</NavLink>
-        </div> */}
-
-        <DialogItem name={dD[0].name} id={dD[0].id} />
-        <DialogItem name={dD[1].name} id={dD[1].id} />
-        <DialogItem name={dD[2].name} id={dD[2].id} />
-        <DialogItem name={dD[3].name} id={dD[3].id} />
-        <DialogItem name={dD[4].name} id={dD[4].id} />
-        <DialogItem name={dD[5].name} id={dD[5].id} />
-      </div>
-      <div className={s.messanges}>
-        <Message message={ms[0].message} />
-        <Message message={ms[1].message} />
-        <Message message={ms[2].message} />
-        <Message message={ms[3].message} />
-        <Message message={ms[4].message} />
-      </div>
+      <div className={s.dialogs__items}>{dE}</div>
+      <div className={s.messanges}>{mE}</div>
     </div>
   );
 };
