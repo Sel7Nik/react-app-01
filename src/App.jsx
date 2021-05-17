@@ -11,7 +11,6 @@ import Settings from './components/Settings/Settings.jsx';
 
 import { Route, BrowserRouter } from 'react-router-dom';
 
-// function App() {
 const App = (p) => {
   return (
     <BrowserRouter>
@@ -26,7 +25,9 @@ const App = (p) => {
 
           <Route
             path="/profile"
-            render={() => <Profile stateProfile={p.state.profilePage} />}
+            render={() => (
+              <Profile stateProfile={p.state.profilePage} addPost={p.addPost} />
+            )}
           />
           <Route path="/news" component={News} />
           <Route path="/music" component={Music} />

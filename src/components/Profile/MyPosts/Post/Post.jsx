@@ -7,7 +7,7 @@ const Post = (p) => {
       <div className={s.avatar}>
         <img
           className={s.img}
-          src="https://forum.gamer.com.tr/data/avatars/o/10407/10407160.jpg?1437290268"
+          src="https://st.depositphotos.com/2101611/4338/v/380/depositphotos_43381251-stock-illustration-silhouette-of-anonymous-man-with.jpg"
           alt=""
         />
       </div>

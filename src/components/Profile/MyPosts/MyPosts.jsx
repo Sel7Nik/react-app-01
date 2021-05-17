@@ -13,7 +13,7 @@ const MyPosts = (p) => {
 
   let addPost = () => {
     let text = newPostElement.current.value;
-    alert(text);
+    p.addPost(text);
   };
 
   return (
