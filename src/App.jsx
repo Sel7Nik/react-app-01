@@ -21,11 +21,13 @@ const App = (p) => {
         <div className={s.app__wrapper__content}>
           <Route
             path="/dialogs"
-            render={() => <Dialogs dialogs={p.dialogs} message={p.messages} />}
+            render={() => <Dialogs stateDialogs={p.state.dialogsPage} />}
           />
 
-          <Route path="/profile" render={() => <Profile posts={p.posts} />} />
-
+          <Route
+            path="/profile"
+            render={() => <Profile stateProfile={p.state.profilePage} />}
+          />
           <Route path="/news" component={News} />
           <Route path="/music" component={Music} />
           <Route path="/settings" component={Settings} />
