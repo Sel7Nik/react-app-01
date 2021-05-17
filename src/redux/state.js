@@ -5,6 +5,7 @@ let state = {
       { id: 2, message: 'It is my first post', likeCount: '0' },
       { id: 3, message: 'It is my second post', likeCount: '32' },
       { id: 4, message: 'It is my eleven post', likeCount: '99' },
+      { id: 4, message: 'It is my life', likeCount: '44' },
     ],
   },
   dialogsPage: {
