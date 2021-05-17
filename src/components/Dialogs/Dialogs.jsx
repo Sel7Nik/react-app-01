@@ -4,7 +4,7 @@ import DialogItem from './DialogItem/DialogItem.jsx';
 import Message from './Message/Message.jsx';
 
 const Dialogs = (p) => {
-  let dD = p.name;
+  let dD = p.dialogs;
   let mD = p.message;
 
   let dialogsElements = dD.map((n) => <DialogItem name={n.name} id={n.id} />);

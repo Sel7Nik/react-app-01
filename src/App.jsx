@@ -19,16 +19,12 @@ const App = (p) => {
         <Header />
         <Navbar />
         <div className={s.app__wrapper__content}>
-          {/* <Route path="/dialogs" component={Dialogs} /> */}
           <Route
             path="/dialogs"
-            render={() => <Dialogs name={p.dialogs} message={p.messages} />}
+            render={() => <Dialogs dialogs={p.dialogs} message={p.messages} />}
           />
-          {/* <Route path="/dialogs" component={() => <Dialogs />} /> */}
 
-          {/* <Route path="/profile" component={Profile} /> */}
-          <Route path="/profile" render={() => <Profile myposts={p.posts} />} />
-          {/* <Route path="/profile" component={() => <Profile />} /> */}
+          <Route path="/profile" render={() => <Profile posts={p.posts} />} />
 
           <Route path="/news" component={News} />
           <Route path="/music" component={Music} />

@@ -28,6 +28,7 @@ let messagesData = [
   // { id: 5, message: 'I am fine too' },
   // { id: 6, message: 'OhOhOh' },
 ];
+
 ReactDOM.render(
   <React.StrictMode>
     <App posts={postsData} dialogs={dialogsData} messages={messagesData} />

@@ -3,13 +3,11 @@ import Post from './Post/Post.jsx';
 import s from './MyPosts.module.css';
 
 const MyPosts = (p) => {
-  let pD = p.myposts;
+  let pD = p.posts;
 
   let postsElement = pD.map((m) => (
     <Post message={m.message} likeCount={m.likeCount} />
   ));
-
-  let pE = postsElement;
 
   return (
     <>
@@ -19,7 +17,7 @@ const MyPosts = (p) => {
           <textarea></textarea>
           <button>Add post</button>
         </div>
-        {pE}
+        {postsElement}
       </div>
     </>
   );
