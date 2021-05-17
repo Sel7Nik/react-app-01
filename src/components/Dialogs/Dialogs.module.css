@@ -14,7 +14,15 @@
 
 .messanges{
 padding: 20px;
+}
 
 
+.dialogs button {
+  display: block;
+  padding: 10px 20px;
+  margin: 10px;
+  text-transform: uppercase;
+  border-radius: 8px;
+  cursor: pointer;
 }
 
