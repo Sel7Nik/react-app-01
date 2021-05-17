@@ -1,32 +1,15 @@
-.header {
-  grid-area: h;
-  background-color: rgb(150, 250, 150);
-}
-
-.img {
-  height: 50px;
-  width: 50px;
-}
 
 .dialogs{
   display: grid;
   grid-template-columns: 2fr 10fr;
 }
 
-.dialogs__items{
+.dialogsItems{
   padding: 20px;
 }
 
-.dialogs__items .active{
+.dialogsItems .active{
   color: gold;
-}
-
-.dialog{
-  padding: 5px;
-}
-.dialog a{
-  text-decoration: none;
-  color:black;
 }
 
 .messanges{
@@ -35,8 +18,3 @@ padding: 20px;
 
 }
 
-.message{
-  padding: 5px;
-  color:white;
-
-}

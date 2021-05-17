@@ -2,18 +2,11 @@ import React from 'react';
 import Post from './Post/Post.jsx';
 import s from './MyPosts.module.css';
 
-const MyPosts = () => {
-  let postsData = [
-    { id: 1, message: 'Hi, how are you Ok', likeCount: '23' },
-    { id: 2, message: 'It is my first post', likeCount: '0' },
-    { id: 3, message: 'It is my second post', likeCount: '32' },
-    { id: 4, message: 'It is my eleven post', likeCount: '99' },
-  ];
-
-  let pD = postsData;
+const MyPosts = (p) => {
+  let pD = p.myposts;
 
   let postsElement = pD.map((m) => (
-    <Post name="Nik" age="33" message={m.message} likeCount={m.likeCount} />
+    <Post message={m.message} likeCount={m.likeCount} />
   ));
 
   let pE = postsElement;
