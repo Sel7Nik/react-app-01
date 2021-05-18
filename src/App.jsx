@@ -26,7 +26,11 @@ const App = (p) => {
           <Route
             path="/profile"
             render={() => (
-              <Profile stateProfile={p.state.profilePage} addPost={p.addPost} />
+              <Profile
+                stateProfilePage={p.state.profilePage}
+                updateNewPostText={p.updateNewPostText}
+                addPost={p.addPost}
+              />
             )}
           />
           <Route path="/news" component={News} />
