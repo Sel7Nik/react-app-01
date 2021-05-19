@@ -11,8 +11,7 @@ const Profile = (p) => {
       <MyPosts
         posts={p.stateProfilePage.postsData}
         newPostText={p.stateProfilePage.newPostText}
-        updateNewPostText={p.updateNewPostText}
-        addPost={p.addPost}
+        dispatch={p.dispatch}
       />
     </div>
   );
