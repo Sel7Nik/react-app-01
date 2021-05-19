@@ -14,7 +14,6 @@ const MyPosts = (p) => {
   let addPost = () => {
     let text = newPostElement.current.value;
     p.addPost(text);
-    p.updateNewPostText('');
   };
 
   let onPostChange = () => {

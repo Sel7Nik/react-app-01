@@ -31,15 +31,17 @@ let state = {
   },
 };
 
-export let addPost = (postMessage) => {
+window.state = state;
+
+export let addPost = () => {
   let newPost = {
     id: 6,
-    message: postMessage,
+    message: state.profilePage.newPostText,
     likeCount: 0,
   };
 
   state.profilePage.postsData.push(newPost);
-
+  state.profilePage.newPostText = '';
   rerenderEntireTree(state);
 };
 

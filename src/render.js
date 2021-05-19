@@ -14,6 +14,7 @@ export let rerenderEntireTree = (state) => {
         updateNewPostText={updateNewPostText}
       />
     </React.StrictMode>,
+
     document.getElementById('root')
   );
 };
