@@ -3,8 +3,8 @@ import React from 'react';
 import s from './Dialogs.module.css';
 import DialogItem from './DialogItem/DialogItem.jsx';
 import Message from './Message/Message.jsx';
-import { updateNewMessageBodyCreator } from '../../redux/state';
-import { sendMessageCreator } from '../../redux/state';
+import { updateNewMessageBodyCreator } from '../../redux/dialogs.reduser.js';
+import { sendMessageCreator } from '../../redux/dialogs.reduser.js';
 
 const Dialogs = (p) => {
   let state = p.store.getState().dialogsPage;

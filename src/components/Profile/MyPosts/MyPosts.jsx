@@ -4,7 +4,7 @@ import s from './MyPosts.module.css';
 import {
   addPostActionCreator,
   updateNewPostTextActionCreator,
-} from '../../../redux/state.js';
+} from '../../../redux/profile.reduser.js';
 
 const MyPosts = (p) => {
   let pD = p.posts;
