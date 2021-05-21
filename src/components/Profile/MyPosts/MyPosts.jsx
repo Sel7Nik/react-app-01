@@ -1,10 +1,7 @@
 import React from 'react';
 import Post from './Post/Post.jsx';
 import s from './MyPosts.module.css';
-import {
-  addPostActionCreator,
-  updateNewPostTextActionCreator,
-} from '../../../redux/profile.reduser.js';
+import { addPostActionCreator } from '../../../redux/profile.reduser.js';
 
 const MyPosts = (p) => {
   let pD = p.posts;
@@ -15,14 +12,15 @@ const MyPosts = (p) => {
 
   let newPostElement = React.createRef();
 
-  let addPost = () => {
-    p.dispatch(addPostActionCreator());
+  let onAddPost = () => {
+    p.addPost();
   };
 
   let onPostChange = () => {
     let text = newPostElement.current.value;
-    p.dispatch(updateNewPostTextActionCreator(text));
+    p.updateNewPostText(text);
   };
+
   return (
     <>
       <div className={s.postsBlock}>
@@ -33,7 +31,7 @@ const MyPosts = (p) => {
             ref={newPostElement}
             value={p.newPostText}
           />
-          <button onClick={addPost}>Add post</button>
+          <button onClick={onAddPost}>Add post</button>
         </div>
         {postsElement}
       </div>

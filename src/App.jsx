@@ -4,7 +4,7 @@ import s from './App.module.css';
 import Header from './components/Header/Header.jsx';
 import Navbar from './components/Navbar/Navbar.jsx';
 import Profile from './components/Profile/Profile.jsx';
-import Dialogs from './components/Dialogs/Dialogs.jsx';
+import DialogsContainer from './components/Dialogs/DialogsContainer.jsx';
 import News from './components/News/News.jsx';
 import Music from './components/Music/Music.jsx';
 import Settings from './components/Settings/Settings.jsx';
@@ -18,17 +18,12 @@ const App = (p) => {
         <Header />
         <Navbar />
         <div className={s.app__wrapper__content}>
-          <Route path="/dialogs" render={() => <Dialogs store={p.store} />} />
-
           <Route
-            path="/profile"
-            render={() => (
-              <Profile
-                stateProfilePage={p.state.profilePage}
-                dispatch={p.dispatch}
-              />
-            )}
+            path="/dialogs"
+            render={() => <DialogsContainer store={p.store} />}
           />
+
+          <Route path="/profile" render={() => <Profile store={p.store} />} />
           <Route path="/news" component={News} />
           <Route path="/music" component={Music} />
           <Route path="/settings" component={Settings} />

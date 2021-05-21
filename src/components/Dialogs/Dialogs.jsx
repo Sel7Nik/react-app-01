@@ -7,13 +7,12 @@ import { updateNewMessageBodyCreator } from '../../redux/dialogs.reduser.js';
 import { sendMessageCreator } from '../../redux/dialogs.reduser.js';
 
 const Dialogs = (p) => {
-  let state = p.store.getState().dialogsPage;
+  let state = p.dialogsPage;
   let dD = state.dialogsData;
   let mD = state.messagesData;
   let nM = state.newMessageBody;
   // let dD = p.dialogs;
   // let mD = p.message;
-
   let dialogsElements = dD.map((n) => <DialogItem name={n.name} id={n.id} />);
   let messagesElements = mD.map((m) => (
     <Message message={m.message} id={m.id} />
@@ -23,12 +22,12 @@ const Dialogs = (p) => {
   let mE = messagesElements;
 
   let onSendMessageClick = () => {
-    p.store.dispatch(sendMessageCreator());
+    p.sendMessageCreator();
   };
 
   let onNewMessageChange = (e) => {
     let body = e.target.value;
-    p.store.dispatch(updateNewMessageBodyCreator(body));
+    p.updateNewMessageBody(body);
   };
 
   return (
