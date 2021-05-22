@@ -1,0 +1,44 @@
+<button onClick={addPost} -->> нажатие кнопки вызов функции  addPost
+
+let addPost = () => {
+    let text = newPostElement.current.value; 
+// сохраняет в text value textarea с атрибутом ref={newPostElement}
+//  подключенным через   let newPostElement = React.createRef();
+
+    p.addPost(text);
+// вызов функции  addPost в state.js через пропсы по пути
+//state.js ~ export  -->>  render.js ~ import -->> App ~ addPost={addPost} -->> Profile ~ addPost={p.addPost} -->>
+// -->> MyPosts ~ p.addPost(text)
+// Результат: создается объект == let newPost == содержащий сообщение  text 
+
+    p.updateNewPostText('');
+  };
+
+
+
+
+lesson 40
+
+при вводе в поле <textarea>
+onChange={onNewMessageChange} callback
+функция делает dispatch со значениями, которые устанавливает другая функция -->>
+
+let onNewMessageChange = (e) => {
+    let body = e.target.value;
+    p.store.dispatch(updateNewMessageBodyCreator(body));
+  };
+
+export const updateNewMessageBodyCreator = (body) => ({
+  type: UPDATE_NEW_MESSAGE_BODY,
+  body: body,
+});
+
+в итоге в dispatch срабатывает условие 
+if (action.type === UPDATE_NEW_MESSAGE_BODY) {
+
+в state newMessageBody записывается значение из поля <textarea>
+
+this._state.dialogsPage.newMessageBody = action.body;
+
+а затем  
+this._callSubscriber(this._state);
