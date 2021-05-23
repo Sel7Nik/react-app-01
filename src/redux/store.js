@@ -1,6 +1,6 @@
-import dialogsReducer from './dialogs.reduser';
-import profileReducer from './profile.reduser';
-import sidebarReducer from './sidebar.reduser';
+import dialogsReducer from '../redux/dialogs.reducer';
+import profileReducer from './profile.reducer';
+import sidebarReducer from './sidebar.reducer';
 
 let store = {
   _state: {
@@ -43,7 +43,9 @@ let store = {
   getState() {
     return this._state;
   },
+
   subscribe(observer) {
+    debugger;
     this._callSubscriber = observer;
   },
 
@@ -57,4 +59,4 @@ let store = {
 };
 
 export default store;
-window.store = store;
+// window.store = store;

@@ -1,6 +1,6 @@
 import React from 'react';
-import { updateNewMessageBodyCreator } from '../../redux/dialogs.reduser.js';
-import { sendMessageCreator } from '../../redux/dialogs.reduser.js';
+import { updateNewMessageBodyCreator } from '../../redux/dialogs.reducer.js';
+import { sendMessageCreator } from '../../redux/dialogs.reducer.js';
 import Dialogs from './Dialogs';
 import { connect } from 'react-redux';
 
