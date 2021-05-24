@@ -1,7 +1,6 @@
 import React from 'react';
 import Post from './Post/Post.jsx';
 import s from './MyPosts.module.css';
-import { addPostActionCreator } from '../../../redux/profile.reducer.js';
 
 const MyPosts = (p) => {
   let pD = p.posts;

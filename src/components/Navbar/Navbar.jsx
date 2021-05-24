@@ -10,12 +10,19 @@ const Navbar = () => {
             Главная
           </NavLink>
         </li>
-        {/* <li className={s.item}> */}
+
         <li className={s.item}>
           <NavLink className={s.link} activeClassName={s.active} to="/dialogs">
             Messages
           </NavLink>
         </li>
+
+        <li className={s.item}>
+          <NavLink className={s.link} activeClassName={s.active} to="/users">
+            Users
+          </NavLink>
+        </li>
+
         <li className={s.item}>
           <NavLink className={s.link} activeClassName={s.active} to="/news">
             News
