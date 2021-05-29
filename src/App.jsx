@@ -2,7 +2,7 @@ import React from 'react';
 import s from './App.module.css';
 import Header from './components/Header/Header.jsx';
 import Navbar from './components/Navbar/Navbar.jsx';
-import Profile from './components/Profile/Profile.jsx';
+import ProfileContainer from './components/Profile/ProfileContainer.jsx';
 import DialogsContainer from './components/Dialogs/DialogsContainer.jsx';
 import News from './components/News/News.jsx';
 import Music from './components/Music/Music.jsx';
@@ -18,7 +18,7 @@ const App = (p) => {
       <div className={s.app__wrapper__content}>
         <Route path="/dialogs" render={() => <DialogsContainer />} />
 
-        <Route path="/profile" render={() => <Profile />} />
+        <Route path="/profile" render={() => <ProfileContainer />} />
 
         <Route path="/users" render={() => <UsersContainer />} />
 
