@@ -1,6 +1,6 @@
 import React from 'react';
 import s from './App.module.css';
-import Header from './components/Header/Header.jsx';
+import HeaderContainer from './components/Header/HeaderContainer.jsx';
 import Navbar from './components/Navbar/Navbar.jsx';
 import ProfileContainer from './components/Profile/ProfileContainer.jsx';
 import DialogsContainer from './components/Dialogs/DialogsContainer.jsx';
@@ -13,12 +13,11 @@ import UsersContainer from './components/Users/UsersContainer';
 const App = (p) => {
   return (
     <div className={s.app__wrapper}>
-      <Header />
+      <HeaderContainer />
       <Navbar />
       <div className={s.app__wrapper__content}>
-        <Route path="/dialogs" render={() => <DialogsContainer />} />
-
         <Route path="/profile/:userId?" render={() => <ProfileContainer />} />
+        <Route path="/dialogs" render={() => <DialogsContainer />} />
 
         <Route path="/users" render={() => <UsersContainer />} />
 

@@ -7,7 +7,7 @@ const Navbar = () => {
       <ul className={s.list}>
         <li className={s.item}>
           <NavLink className={s.link} activeClassName={s.active} to="/profile">
-            Главная
+            Profile
           </NavLink>
         </li>
 
