@@ -6,6 +6,8 @@ const SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT ';
 const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
 const TOGGLE_IS_FOLLOWING_PROGRESS = 'TOGGLE_IS_FOLLOWING_PROGRESS';
 
+import { usersAPI } from '../api/api';
+
 let initialState = {
   users: [],
   pageSize: 6,
@@ -88,4 +90,17 @@ export const toggleFollowingProgress = (isFetching, userId) => ({
   isFetching,
   userId,
 });
+
+export const getUsersThunkCreator = () => {
+return(dispatch) => {
+  dispatch(toggleIsFetching(true));
+  usersAPI
+    .getUsers(this.props.currentPage, this.props.pageSize)
+    .then((data) => {
+      dispatch(toggleIsFetching(false));
+      dispatch(setUsers(data.items));
+      dispatch(setTotalUsersCount(data.totalCount));
+    });
+};
+
 export default usersReducer;
