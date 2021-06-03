@@ -17,9 +17,12 @@ const App = (p) => {
       <Navbar />
       <div className={s.app__wrapper__content}>
         <Route path="/profile/:userId?" render={() => <ProfileContainer />} />
+
         <Route path="/dialogs" render={() => <DialogsContainer />} />
 
         <Route path="/users" render={() => <UsersContainer />} />
+
+        <Route path="/login" render={() => <UsersContainer />} />
 
         <Route path="/news" component={News} />
         <Route path="/music" component={Music} />
