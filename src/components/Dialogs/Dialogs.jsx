@@ -3,9 +3,9 @@ import s from './Dialogs.module.css';
 import DialogItem from './DialogItem/DialogItem.jsx';
 import Message from './Message/Message.jsx';
 
-const Dialogs = (p) => {
-  let dD = p.name;
-  let mD = p.message;
+const Dialogs = (props) => {
+  let dD = props.state.dialogsData;
+  let mD = props.state.messagesData;
 
   let dialogsElements = dD.map((n) => <DialogItem name={n.name} id={n.id} />);
   let messagesElements = mD.map((m) => (

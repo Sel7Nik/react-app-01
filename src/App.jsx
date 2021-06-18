@@ -12,23 +12,22 @@ import Settings from './components/Settings/Settings.jsx';
 import { Route, BrowserRouter } from 'react-router-dom';
 
 // function App() {
-const App = (p) => {
+const App = (props) => {
   return (
     <BrowserRouter>
       <div className={s.app__wrapper}>
         <Header />
         <Navbar />
         <div className={s.app__wrapper__content}>
-          {/* <Route path="/dialogs" component={Dialogs} /> */}
           <Route
             path="/dialogs"
-            render={() => <Dialogs name={p.dialogs} message={p.messages} />}
+            render={() => <Dialogs state={props.state.dialogsPage} />}
           />
-          {/* <Route path="/dialogs" component={() => <Dialogs />} /> */}
 
-          {/* <Route path="/profile" component={Profile} /> */}
-          <Route path="/profile" render={() => <Profile myposts={p.posts} />} />
-          {/* <Route path="/profile" component={() => <Profile />} /> */}
+          <Route
+            path="/profile"
+            render={() => <Profile state={props.state.profilePage} />}
+          />
 
           <Route path="/news" component={News} />
           <Route path="/music" component={Music} />
