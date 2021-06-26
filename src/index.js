@@ -4,10 +4,15 @@ import './index.css';
 import App from './App.jsx';
 import state from './redux/state';
 import { BrowserRouter } from 'react-router-dom';
+import { addPost } from './../src/redux/state';
 
-ReactDOM.render(
-  <BrowserRouter>
-    <App state={state} />
-  </BrowserRouter>,
-  document.getElementById('root')
-);
+let rerenderEntireTree = () => {
+  ReactDOM.render(
+    <BrowserRouter>
+      <App state={state} addPost={addPost} />
+    </BrowserRouter>,
+    document.getElementById('root')
+  );
+};
+
+rerenderEntireTree();

@@ -1,14 +1,16 @@
 import React from 'react';
 import Post from './Post/Post.jsx';
 import css from './MyPosts.module.css';
+import { addPost } from './../../../redux/state.js';
 
 const MyPosts = (props) => {
   let postsElement = props.state.map((data) => (
     <Post message={data.message} likeCount={data.likeCount} />
   ));
+
   let addPost = () => {
-    let text = document.getElementById('inputNewPost');
-    alert(text);
+    let text = document.getElementById('inputNewPost').value;
+    props.addPost(text);
   };
 
   return (
