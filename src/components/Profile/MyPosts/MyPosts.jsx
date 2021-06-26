@@ -6,14 +6,18 @@ const MyPosts = (props) => {
   let postsElement = props.state.map((data) => (
     <Post message={data.message} likeCount={data.likeCount} />
   ));
+  let addPost = () => {
+    let text = document.getElementById('inputNewPost');
+    alert(text);
+  };
 
   return (
     <>
       <div className={css.postsBlock}>
         <h3>My posts</h3>
         <div>
-          <textarea></textarea>
-          <button>Add post</button>
+          <textarea id="inputNewPost"></textarea>
+          <button onClick={addPost}>Add post</button>
         </div>
         {postsElement}
       </div>
