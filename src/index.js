@@ -6,7 +6,7 @@ import state from './redux/state';
 import { BrowserRouter } from 'react-router-dom';
 import { addPost } from './../src/redux/state';
 
-let rerenderEntireTree = () => {
+export let rerenderEntireTree = () => {
   ReactDOM.render(
     <BrowserRouter>
       <App state={state} addPost={addPost} />

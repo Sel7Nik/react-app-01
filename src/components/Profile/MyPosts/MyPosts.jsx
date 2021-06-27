@@ -1,7 +1,6 @@
 import React from 'react';
 import Post from './Post/Post.jsx';
 import css from './MyPosts.module.css';
-import { addPost } from './../../../redux/state.js';
 
 const MyPosts = (props) => {
   let postsElement = props.state.map((data) => (
