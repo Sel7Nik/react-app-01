@@ -5,6 +5,7 @@ const state = {
       { id: 1, message: 'Hi, how are you Ok', likeCount: '23' },
       { id: 2, message: 'It is my first post', likeCount: '0' },
     ],
+    newPostText: 'it-kama',
   },
 
   dialogsPage: {
