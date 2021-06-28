@@ -1,4 +1,4 @@
-import { rerenderEntireTree } from '../render';
+let rerenderEntireTree = () => {};
 const state = {
   profilePage: {
     postsData: [
@@ -29,12 +29,15 @@ export const addPost = () => {
   };
   state.profilePage.postsData.push(newMessage);
   state.profilePage.newPostText = '';
-  rerenderEntireTree(state);
+  rerenderEntireTree();
 };
 
 export const updateNewPostText = (newText) => {
   state.profilePage.newPostText = newText;
-  rerenderEntireTree(state);
+  rerenderEntireTree();
 };
 
+export const subscribe = (observer) => {
+  rerenderEntireTree = observer;
+};
 export default state;
