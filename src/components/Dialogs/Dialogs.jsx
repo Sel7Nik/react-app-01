@@ -8,8 +8,7 @@ import {
 } from '../../redux/dialogs-reducer';
 
 const Dialogs = (props) => {
-  debugger;
-  let dialogsState = props.store._state.dialogsPage;
+  let dialogsState = props.store.getState().dialogsPage;
   let dD = dialogsState.dialogsData;
   let mD = dialogsState.messagesData;
   let newMessageBody = dialogsState.newMessageBody;
