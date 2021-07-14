@@ -9,9 +9,11 @@ const Dialogs = (props) => {
   let mD = dialogsState.messagesData;
   let newMessageBody = dialogsState.newMessageBody;
 
-  let dialogsElements = dD.map((n) => <DialogItem name={n.name} id={n.id} />);
+  let dialogsElements = dD.map((n) => (
+    <DialogItem name={n.name} key={n.id} id={n.id} />
+  ));
   let messagesElements = mD.map((m) => (
-    <Message message={m.message} id={m.id} />
+    <Message message={m.message} key={m.id} id={m.id} />
   ));
 
   const sendMessage = () => {
