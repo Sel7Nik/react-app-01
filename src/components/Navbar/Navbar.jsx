@@ -17,6 +17,11 @@ const Navbar = () => {
           </NavLink>
         </li>
         <li className={s.item}>
+          <NavLink className={s.link} activeClassName={s.active} to="/users">
+            Users
+          </NavLink>
+        </li>
+        {/* <li className={s.item}>
           <NavLink className={s.link} activeClassName={s.active} to="/news">
             News
           </NavLink>
@@ -30,7 +35,7 @@ const Navbar = () => {
           <NavLink className={s.link} activeClassName={s.active} to="/settings">
             Settings
           </NavLink>
-        </li>
+        </li> */}
       </ul>
     </nav>
   );
