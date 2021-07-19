@@ -6,16 +6,40 @@ import userPhoto from '../../images/avatar-anonymous-face.png';
 class Users extends React.Component {
   componentDidMount() {
     axios
-      .get('https://social-network.samuraijs.com/api/1.0/users')
+      .get(
+        `https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`
+      )
       .then((response) => {
         this.props.setUsers(response.data.items);
       });
   }
 
   render() {
+    let pagesCount = Math.ceil(
+      this.props.totalUsersCount / this.props.pageSize
+    );
+
+    let pages = [];
+    for (let i = 1; i <= pagesCount; i++) {
+      pages.push(i);
+    }
+
     return (
-      <>
-        <button onClick={this.getUsers}>GET USERS</button>
+      <div>
+        <div>
+          {pages.map((page) => {
+            return (
+              <span
+                className={
+                  this.props.currentPage === page && styles.selectedPage
+                }
+              >
+                {page + ' '}
+              </span>
+            );
+          })}
+        </div>
+
         {this.props.users.map((user) => (
           <div key={user.id}>
             <span>
@@ -60,7 +84,7 @@ class Users extends React.Component {
             </span>
           </div>
         ))}
-      </>
+      </div>
     );
   }
 }
