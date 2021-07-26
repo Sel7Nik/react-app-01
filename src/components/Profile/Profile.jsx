@@ -5,13 +5,8 @@ import ProfileInfo from './ProfileInfo/ProfileInfo.jsx';
 const Profile = (props) => {
   return (
     <div>
-      <ProfileInfo />
-      <MyPostsContainer
-      // store={props.store}
-      // postsData={props.profilePage.postsData}
-      // newPostText={props.profilePage.newPostText}
-      // dispatch={props.dispatch}
-      />
+      <ProfileInfo profile={props.profile} />
+      <MyPostsContainer />
     </div>
   );
 };
