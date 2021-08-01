@@ -9,7 +9,6 @@ let Users = (props) => {
   for (let i = 1; i <= pagesCount; i++) {
     pages.push(i);
   }
-
   return (
     <div>
       <div>
@@ -48,9 +47,11 @@ let Users = (props) => {
             <div>
               {user.followed ? (
                 <button
-                  disabled={props.followingInProgress}
+                  disabled={props.followingInProgress.some(
+                    (id) => id === user.id
+                  )}
                   onClick={() => {
-                    props.toggleIsFollowingProgress(true);
+                    props.toggleFollowingProgress(true, user.id);
                     axios
                       .delete(
                         `https://social-network.samuraijs.com/api/1.0/follow/${user.id}`,
@@ -65,7 +66,7 @@ let Users = (props) => {
                         if (response.data.resultCode === 0) {
                           props.unfollow(user.id);
                         }
-                        props.toggleIsFollowingProgress(false);
+                        props.toggleFollowingProgress(false, user.id);
                       });
                   }}
                 >
@@ -73,9 +74,11 @@ let Users = (props) => {
                 </button>
               ) : (
                 <button
-                  disabled={props.followingInProgress}
+                  disabled={props.followingInProgress.some(
+                    (id) => id === user.id
+                  )}
                   onClick={() => {
-                    props.toggleIsFollowingProgress(true);
+                    props.toggleFollowingProgress(true, user.Id);
                     axios
                       .post(
                         `https://social-network.samuraijs.com/api/1.0/follow/${user.id}`,
@@ -91,7 +94,7 @@ let Users = (props) => {
                         if (response.data.resultCode === 0) {
                           props.follow(user.id);
                         }
-                        props.toggleIsFollowingProgress(false);
+                        props.toggleFollowingProgress(false, user.Id);
                       });
                   }}
                 >
