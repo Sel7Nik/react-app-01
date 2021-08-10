@@ -9,6 +9,7 @@ import Navbar from './components/Navbar/Navbar.jsx';
 import ProfileContainer from './components/Profile/ProfileContainer.jsx';
 import UsersContainer from './components/Users/UsersContainer.jsx';
 import HeaderContainer from './components/Header/HeaderContainer';
+import LoginPage from './components/Login/Login';
 
 // function App() {
 const App = (props) => {
@@ -22,6 +23,7 @@ const App = (props) => {
         <Route path="/profile/:userId?" render={() => <ProfileContainer />} />
 
         <Route path="/users" render={() => <UsersContainer />} />
+        <Route path="/login" render={() => <LoginPage />} />
 
         {/* <Route path="/news" component={News} />
         <Route path="/music" component={Music} />
