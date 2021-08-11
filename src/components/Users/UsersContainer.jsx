@@ -9,7 +9,7 @@ import {
   toggleFollowingProgress,
   getUsers,
 } from '../../redux/users-reducer.js';
-
+import { withAuthRedirect } from '../../hoc/withAuthRedirect.js';
 class UsersContainer extends React.Component {
   componentDidMount() {
     this.props.getUsers(this.props.currentPage, this.props.pageSize);
@@ -58,4 +58,13 @@ let mapDispatchToProps = {
   getUsers,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(UsersContainer);
+// let AuthRedirectComponent = withAuthRedirect(UsersContainer);
+
+// export default connect(
+//   mapStateToProps,
+//   mapDispatchToProps
+// )(AuthRedirectComponent);
+
+export default withAuthRedirect(
+  connect(mapStateToProps, mapDispatchToProps)(UsersContainer)
+);
