@@ -1,7 +1,7 @@
 import React from 'react';
 import Preloader from '../../common/preloader/Preloader';
 import s from './ProfileInfo.module.css';
-
+import ProfileStatus from './ProfileStatus.jsx';
 const ProfileInfo = (props) => {
   if (!props.profile) {
     return <Preloader />;
@@ -19,7 +19,7 @@ const ProfileInfo = (props) => {
 
       <div className={s.descriptionBlock}>
         <img src={props.profile.photos.large} alt="large" />
-        ava + description
+        <ProfileStatus status={'Hello my dear girl'} />
       </div>
     </div>
   );
