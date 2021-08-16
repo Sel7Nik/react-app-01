@@ -3,7 +3,8 @@ import { Redirect } from 'react-router-dom';
 import { Field, reduxForm } from 'redux-form';
 import { login } from '../../redux/auth-reducer';
 import { maxLengthCreator, required } from '../../utils/validators/validators';
-import { Input } from '../common/preloader/FormsControls/FormsControls';
+import { Input } from '../common/FormsControls/FormsControls';
+import css from './../common/FormsControls/FormsControls.module.css';
 
 const maxLength50 = maxLengthCreator(50);
 const LoginForm = (props) => {
@@ -35,6 +36,7 @@ const LoginForm = (props) => {
         />
         remember me
       </div>
+      {props.error && <div className={css.formSummaryError}>{props.error}</div>}
       <div>
         <button>Login</button>
       </div>

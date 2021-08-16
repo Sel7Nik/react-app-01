@@ -6,7 +6,7 @@ import {
   maxLengthCreator,
   required,
 } from '../../../utils/validators/validators.js';
-import { Textarea } from '../../common/preloader/FormsControls/FormsControls.js';
+import { Textarea } from '../../common/FormsControls/FormsControls.js';
 
 const MyPosts = (props) => {
   let postsElement = props.postsData.map((data) => (
