@@ -9,9 +9,13 @@ import {
 import { Textarea } from '../../common/FormsControls/FormsControls.js';
 
 const MyPosts = (props) => {
-  let postsElement = props.postsData.map((data) => (
-    <Post message={data.message} likeCount={data.likeCount} key={data.id} />
-  ));
+  console.log('RENDER');
+
+  let postsElement = [...props.postsData]
+    .reverse()
+    .map((data) => (
+      <Post message={data.message} likeCount={data.likeCount} key={data.id} />
+    ));
 
   let onAddPost = (value) => {
     props.addPost(value.newPostText);
