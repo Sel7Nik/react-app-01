@@ -7,7 +7,7 @@ import { Input } from '../common/FormsControls/FormsControls';
 import css from './../common/FormsControls/FormsControls.module.css';
 
 const maxLength50 = maxLengthCreator(50);
-const LoginForm = (handleSubmit, error) => {
+const LoginForm = ({ handleSubmit, error }) => {
   return (
     // <form onSubmit={props.handleSubmit}>
     <form onSubmit={handleSubmit}>
