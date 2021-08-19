@@ -66,11 +66,11 @@ const usersReducer = (state = initialState, action) => {
           : state.followingInProgress.filter((id) => id !== action.userId),
       };
     }
-
     default:
       return state;
   }
 };
+//! Action Creator
 export const followSuccess = (userId) => ({ type: FOLLOW, userId });
 export const unfollowSuccess = (userId) => ({ type: UNFOLLOW, userId });
 export const setUsers = (users) => ({ type: SET_USERS, users });
@@ -94,39 +94,40 @@ export const toggleFollowingProgress = (isFetching, userId) => ({
   userId,
 });
 
+//! dispatch
 export const requestUsers = (page, pageSize) => {
-  return (dispatch) => {
+  return async (dispatch) => {
     dispatch(toggleIsFetching(true));
     dispatch(setCurrentPage(page));
 
-    usersAPI.getUsers(page, pageSize).then((data) => {
-      dispatch(toggleIsFetching(false));
-      dispatch(setUsers(data.items));
-      dispatch(setTotalUsersCount(data.totalCount));
-    });
+    const data = await usersAPI.getUsers(page, pageSize);
+    dispatch(toggleIsFetching(false));
+    dispatch(setUsers(data.items));
+    dispatch(setTotalUsersCount(data.totalCount));
   };
 };
 
 export const follow = (userId) => {
-  return (dispatch) => {
+  return async (dispatch) => {
     dispatch(toggleFollowingProgress(true, userId));
-    usersAPI.follow(userId).then((response) => {
-      if (response.data.resultCode === 0) {
-        dispatch(followSuccess(userId));
-      }
-      dispatch(toggleFollowingProgress(false, userId));
-    });
+
+    const response = await usersAPI.follow(userId);
+    if (response.data.resultCode === 0) {
+      dispatch(followSuccess(userId));
+    }
+    dispatch(toggleFollowingProgress(false, userId));
   };
 };
+
 export const unfollow = (userId) => {
-  return (dispatch) => {
+  return async (dispatch) => {
     dispatch(toggleFollowingProgress(true, userId));
-    usersAPI.unfollow(userId).then((response) => {
-      if (response.data.resultCode === 0) {
-        dispatch(unfollowSuccess(userId));
-      }
-      dispatch(toggleFollowingProgress(false, userId));
-    });
+
+    const response = await usersAPI.unfollow(userId);
+    if (response.data.resultCode === 0) {
+      dispatch(unfollowSuccess(userId));
+    }
+    dispatch(toggleFollowingProgress(false, userId));
   };
 };
 
