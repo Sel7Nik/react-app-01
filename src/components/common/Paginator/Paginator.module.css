@@ -1,0 +1,11 @@
+
+.selectedPage {
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+
+}
+
+.paginationNumber {
+  cursor: pointer;
+}
