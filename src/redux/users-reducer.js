@@ -26,12 +26,6 @@ const usersReducer = (state = initialState, action) => {
         users: updateObjectInArray(state.users, action.userId, 'id', {
           followed: true,
         }),
-        // users: state.users.map((users) => {
-        //   if (users.id === action.userId) {
-        //     return { ...users, followed: true };
-        //   }
-        //   return users;
-        // }),
       };
     }
 
@@ -41,12 +35,6 @@ const usersReducer = (state = initialState, action) => {
         users: updateObjectInArray(state.users, action.userId, 'id', {
           followed: true,
         }),
-        // users: state.users.map((users) => {
-        //   if (users.id === action.userId) {
-        //     return { ...users, followed: false };
-        //   }
-        //   return users;
-        // }),
       };
     }
 
