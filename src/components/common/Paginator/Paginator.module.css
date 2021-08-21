@@ -2,10 +2,16 @@
 .selectedPage {
   font-size: 18px;
   font-weight: bold;
-  cursor: pointer;
+  /* cursor: pointer; */
 
 }
-
-.paginationNumber {
-  cursor: pointer;
+.paginator{
+  margin: 10px;
 }
+.pageNumber {
+  cursor: pointer;
+  padding: 3px;
+  border: 1px grey solid;
+}
+
+

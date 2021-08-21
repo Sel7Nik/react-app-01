@@ -3,20 +3,22 @@ import User from './User';
 
 let Users = ({
   currentPage,
-  totalUsersCount,
+  totalItemsCount,
   pageSize,
   onPageChanged,
   users,
+  portionSize,
   ...props
 }) => {
   return (
     <div>
       <Paginator
         currentPage={currentPage}
-        totalUsersCount={totalUsersCount}
+        totalItemsCount={totalItemsCount}
         pageSize={pageSize}
         onPageChanged={onPageChanged}
-      />
+        portionSize={portionSize}
+      />{' '}
       <div>
         {users.map((user) => (
           <User
