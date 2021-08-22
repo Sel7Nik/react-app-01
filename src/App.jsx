@@ -15,7 +15,7 @@ import { Provider } from 'react-redux';
 
 // import DialogsContainer from './components/Dialogs/DialogsContainer';
 import ProfileContainer from './components/Profile/ProfileContainer.jsx';
-import { Suspense } from 'react';
+import { withSuspense } from './hoc/withSuspense';
 
 const DialogsContainer = React.lazy(() =>
   import('./components/Dialogs/DialogsContainer')
@@ -35,30 +35,11 @@ class App extends Component {
         <HeaderContainer />
         <Navbar />
         <div className={css.app__wrapper__content}>
-          <Route
-            path="/dialogs"
-            render={() => {
-              return (
-                <div>
-                  <Suspense fallback={<div>Loading...</div>}>
-                    <DialogsContainer />
-                  </Suspense>
-                </div>
-              );
-            }}
-          />
+          <Route path="/dialogs" render={withSuspense(DialogsContainer)} />
 
           <Route
             path="/profile/:userId?"
-            render={() => {
-              return (
-                <div>
-                  <Suspense fallback={<div>Loading...</div>}>
-                    <ProfileContainer />
-                  </Suspense>
-                </div>
-              );
-            }}
+            render={withSuspense(ProfileContainer)}
           />
 
           <Route path="/users" render={() => <UsersContainer />} />
