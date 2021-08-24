@@ -6,6 +6,7 @@ import {
   getStatus,
   updateStatus,
   savePhoto,
+  saveProfile,
 } from '../../redux/profile-reducer.js';
 import { withRouter } from 'react-router-dom';
 import { withAuthRedirect } from '../../hoc/withAuthRedirect.js';
@@ -51,7 +52,13 @@ let mapStateToProps = (state) => ({
   isAuth: state.auth.isAuth,
 });
 
-let mapDispatchToProps = { getUserProfile, getStatus, updateStatus, savePhoto };
+let mapDispatchToProps = {
+  getUserProfile,
+  getStatus,
+  updateStatus,
+  savePhoto,
+  saveProfile,
+};
 
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),
