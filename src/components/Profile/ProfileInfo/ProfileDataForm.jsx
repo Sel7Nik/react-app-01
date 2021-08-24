@@ -5,13 +5,15 @@ import {
   Textarea,
 } from '../../common/FormsControls/FormsControls';
 import css from './ProfileInfo.module.css';
-
-const ProfileDataForm = ({ handleSubmit, profile }) => {
+import css2 from '../../common/FormsControls/FormsControls.module.css';
+const ProfileDataForm = ({ handleSubmit, profile, error }) => {
   return (
     <form onSubmit={handleSubmit}>
       <div>
         <button>save</button>
       </div>
+      ---
+      {error && <div className={css2.formSummaryError}>{error}</div>}
       ---
       <div>
         <b>Имя :</b>: {createField('Имя ', 'fullName', [], Input)}
@@ -40,7 +42,7 @@ const ProfileDataForm = ({ handleSubmit, profile }) => {
         <b>Контакты :</b>:
         {Object.keys(profile.contacts).map((key) => {
           return (
-            <div className={css.contact}>
+            <div className={css.contact} key={key}>
               <b>{key} :</b> {createField(key, 'contacts.' + key, [], Input)}
             </div>
           );
