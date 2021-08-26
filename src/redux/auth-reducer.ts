@@ -1,9 +1,16 @@
-import { stopSubmit } from 'redux-form';
+// import { stopSubmit } from 'redux-form';
 import { authAPI, securityAPI } from '../api/api';
 const SET_USER_DATA = 'react-app-01/auth/SET_USER_DATA';
 const GET_CAPTCHA_URL_SUCCESS = 'react-app-01/auth/GET_CAPTCHA_URL_SUCCESS';
 
-let initialState = {
+export type InitialStateType = {
+  usersId: Number | null,
+  email: string | null,
+  login: string | null,
+  isAuth: boolean,
+  captchaUrl: string | null,
+};
+let initialState : InitialStateType = {
   usersId: null,
   email: null,
   login: null,
@@ -11,7 +18,7 @@ let initialState = {
   captchaUrl: null,
 };
 
-const authReducer = (state = initialState, action) => {
+const authReducer = (state = initialState, action:any) : InitialStateType=> {
   switch (action.type) {
     case SET_USER_DATA: {
       return {
@@ -31,11 +38,24 @@ const authReducer = (state = initialState, action) => {
   }
 };
 
-export const setAuthUserData = (userId, email, login, isAuth) => ({
+export type SetAuthUserDataActionPayloadType = {
+  userId:number
+   email:string
+    login:string
+    isAuth: boolean
+}
+export type SetAuthUserDataActionType = {
+  type: typeof SET_USER_DATA
+  payload: SetAuthUserDataActionPayloadType
+
+}
+
+export const setAuthUserData = (userId:number, email:string, login:string, isAuth:boolean):SetAuthUserDataActionType => ({
   type: SET_USER_DATA,
   payload: { userId, email, login, isAuth },
 });
-export const getCaptchaUrlSuccess = (captchaUrl) => ({
+
+export const getCaptchaUrlSuccess = (captchaUrl:string) => ({
   type: GET_CAPTCHA_URL_SUCCESS,
   payload: { captchaUrl },
 });
@@ -48,7 +68,7 @@ export const getAuthUserData = () => async (dispatch) => {
   }
 };
 export const login =
-  (email, password, rememberMe, captcha) => async (dispatch) => {
+  (email:string, password:string, rememberMe:boolean, captcha) => async (dispatch) => {
     const response = await authAPI.login(email, password, rememberMe, captcha);
     if (response.data.resultCode === 0) {
       dispatch(getAuthUserData());
