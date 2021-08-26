@@ -1,3 +1,4 @@
+import { getCaptchaUrl } from './auth-reducer';
 // import { stopSubmit } from 'redux-form';
 import { authAPI, securityAPI } from '../api/api';
 const SET_USER_DATA = 'react-app-01/auth/SET_USER_DATA';
@@ -55,12 +56,22 @@ export const setAuthUserData = (userId:number, email:string, login:string, isAut
   payload: { userId, email, login, isAuth },
 });
 
-export const getCaptchaUrlSuccess = (captchaUrl:string) => ({
+// type GetCaptchaUrlSuccessActionPayloadType = {
+//   captchaUrl:string
+// }
+
+type GetCaptchaUrlSuccessActionType = {
+  type: typeof GET_CAPTCHA_URL_SUCCESS
+  // payload: GetCaptchaUrlSuccessActionPayloadType
+  payload:{captchaUrl:string}
+}
+
+export const getCaptchaUrlSuccess = (captchaUrl:string) :GetCaptchaUrlSuccessActionType=> ({
   type: GET_CAPTCHA_URL_SUCCESS,
   payload: { captchaUrl },
 });
 
-export const getAuthUserData = () => async (dispatch) => {
+export const getAuthUserData = () => async (dispatch:any) => {
   const response = await authAPI.me();
   if (response.data.resultCode === 0) {
     let { id, login, email } = response.data.data;
@@ -68,7 +79,7 @@ export const getAuthUserData = () => async (dispatch) => {
   }
 };
 export const login =
-  (email:string, password:string, rememberMe:boolean, captcha) => async (dispatch) => {
+  (email:string, password:string, rememberMe:boolean, captcha:string) => async (dispatch:any) => {
     const response = await authAPI.login(email, password, rememberMe, captcha);
     if (response.data.resultCode === 0) {
       dispatch(getAuthUserData());
@@ -84,13 +95,13 @@ export const login =
     }
   };
 
-export const getCaptchaUrl = () => async (dispatch) => {
+export const getCaptchaUrl = () => async (dispatch:any) => {
   const response = await securityAPI.getCaptchaUrl();
   const captchaUrl = response.data.url;
   dispatch(getCaptchaUrlSuccess(captchaUrl));
 };
 
-export const logout = () => async (dispatch) => {
+export const logout = () => async (dispatch:any) => {
   const response = await authAPI.logout();
   if (response.data.resultCode === 0) {
     dispatch(setAuthUserData(null, null, null, false));
