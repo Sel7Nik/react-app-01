@@ -3,6 +3,8 @@ import { authAPI, securityAPI } from '../api/api';
 const SET_USER_DATA = 'react-app-01/auth/SET_USER_DATA';
 const GET_CAPTCHA_URL_SUCCESS = 'react-app-01/auth/GET_CAPTCHA_URL_SUCCESS';
 
+
+//! variant 1
 export type InitialStateType = {
   usersId: Number | null,
   email: string | null,
@@ -18,18 +20,32 @@ let initialState : InitialStateType = {
   captchaUrl: null,
 };
 
-const authReducer = (state = initialState, action:any) : InitialStateType=> {
+//! variant 2
+// let initialState = {
+//   usersId: null as number | null,
+//   email: null as string | null,
+//   login: null as string | null,
+//   isAuth: false as boolean,
+//   captchaUrl: null as string | null,
+// };
+// export type InitialStateType = typeof initialState
+
+
+
+const authReducer = (state = initialState, action:any) : InitialStateType => {
   switch (action.type) {
     case SET_USER_DATA: {
       return {
         ...state,
         ...action.payload,
+        usersId: "4"
       };
     }
     case GET_CAPTCHA_URL_SUCCESS: {
       return {
         ...state,
         ...action.payload,
+        
       };
     }
 
