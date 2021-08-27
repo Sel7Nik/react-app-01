@@ -1,5 +1,4 @@
-import { getCaptchaUrl } from './auth-reducer';
-// import { stopSubmit } from 'redux-form';
+import { stopSubmit } from 'redux-form';
 import { authAPI, securityAPI } from '../api/api';
 const SET_USER_DATA = 'react-app-01/auth/SET_USER_DATA';
 const GET_CAPTCHA_URL_SUCCESS = 'react-app-01/auth/GET_CAPTCHA_URL_SUCCESS';
@@ -40,9 +39,9 @@ const authReducer = (state = initialState, action:any) : InitialStateType=> {
 };
 
 export type SetAuthUserDataActionPayloadType = {
-  userId:number
-   email:string
-    login:string
+  userId:number | null
+   email:string | null
+    login:string | null
     isAuth: boolean
 }
 export type SetAuthUserDataActionType = {
@@ -51,7 +50,7 @@ export type SetAuthUserDataActionType = {
 
 }
 
-export const setAuthUserData = (userId:number, email:string, login:string, isAuth:boolean):SetAuthUserDataActionType => ({
+export const setAuthUserData = (userId:number | null, email:string | null, login:string | null, isAuth:boolean):SetAuthUserDataActionType => ({
   type: SET_USER_DATA,
   payload: { userId, email, login, isAuth },
 });
