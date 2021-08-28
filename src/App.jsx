@@ -8,7 +8,7 @@ import {
 import css from './App.module.css';
 import Navbar from './components/Navbar/Navbar.jsx';
 
-import UsersContainer from './components/Users/UsersContainer.jsx';
+import UsersContainer from './components/Users/UsersContainer.tsx';
 import HeaderContainer from './components/Header/HeaderContainer';
 import LoginPage from './components/Login/Login';
 import React, { Component } from 'react';
