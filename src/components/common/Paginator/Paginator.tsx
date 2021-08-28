@@ -6,7 +6,7 @@ type PropsType = {
   currentPage: number
   totalItemsCount: number
   pageSize: number
-  onPageChanged: () => void
+  onPageChanged: (pageNumber: number) => void
   portionSize: number
 
 }
@@ -19,11 +19,11 @@ let Paginator: React.FC<PropsType> = ({
   ...props
 }) => {
   let pagesCount = Math.ceil(totalItemsCount / pageSize);
-  let pages = [];
+  let pages: Array<number> = [];
   for (let i = 1; i <= pagesCount; i++) {
     pages.push(i);
   }
-  let portionCount = Math.ceil(pagesCount, portionSize);
+  let portionCount = Math.ceil(pagesCount / portionSize);
   let [portionNamber, setPortionNamber] = useState(1);
   let leftPortionPageNamber = (portionNamber - 1) * portionSize + 1;
   let rightPortionPageNamber = portionNamber * portionSize;
@@ -41,22 +41,22 @@ let Paginator: React.FC<PropsType> = ({
       )}
       {pages
         .filter(
-          (page) =>
-            page >= leftPortionPageNamber && page <= rightPortionPageNamber
+          (pageNumber) =>
+            pageNumber >= leftPortionPageNamber && pageNumber <= rightPortionPageNamber
         )
-        .map((page) => {
+        .map((pageNumber) => {
           return (
             <span
               className={cn(
-                { [css.selectedPage]: currentPage === page },
+                { [css.selectedPage]: currentPage === pageNumber },
                 css.pageNumber
               )}
-              key={page}
+              key={pageNumber}
               onClick={(even) => {
-                onPageChanged(page);
+                onPageChanged(pageNumber);
               }}
             >
-              {page + ' '}
+              {pageNumber + ' '}
             </span>
           );
         })}

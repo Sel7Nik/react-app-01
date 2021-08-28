@@ -8,7 +8,7 @@ import {
   setCurrentPage,
   toggleFollowingProgress,
   requestUsers,
-} from '../../redux/users-reducer.js';
+} from '../../redux/users-reducer.ts';
 import { compose } from 'redux';
 import {
   getUsers,
