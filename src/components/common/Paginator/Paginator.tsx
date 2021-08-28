@@ -1,7 +1,16 @@
 import { useState } from 'react';
 import css from './Paginator.module.css';
 import cn from 'classnames';
-let Paginator = ({
+
+type PropsType = {
+  currentPage: number
+  totalItemsCount: number
+  pageSize: number
+  onPageChanged: () => void
+  portionSize: number
+
+}
+let Paginator: React.FC<PropsType> = ({
   currentPage,
   totalItemsCount,
   pageSize,
