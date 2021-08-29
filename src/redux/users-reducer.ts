@@ -1,8 +1,8 @@
 import { UserType } from './../types/type';
 import { usersAPI } from '../api/api';
 import { updateObjectInArray } from '../utils/object-helpers';
+import { ThunkAction } from 'redux-thunk';
 import { AppStateType } from './redux-store';
-import { Dispatch } from 'redux';
 
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
@@ -142,11 +142,11 @@ export const toggleFollowingProgress = (isFetching: boolean, userId: number): To
 
 //! dispatch
 
-type GetStateType = () => AppStateType
-type DispatchType = Dispatch<ActionsTypes>
+// type GetStateType = () => AppStateType
+// type DispatchType = Dispatch<ActionsTypes>
 
-export const requestUsers = (page: number, pageSize: number) => {
-  return async (dispatch: DispatchType, getState: GetStateType) => {
+export const requestUsers = (page: number, pageSize: number): ThunkAction<Promise<void>, AppStateType, unknown, ActionsTypes> => {
+  return async (dispatch, getState) => {
     dispatch(toggleIsFetching(true));
     dispatch(setCurrentPage(page));
 
