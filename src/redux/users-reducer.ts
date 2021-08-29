@@ -1,6 +1,8 @@
 import { UserType } from './../types/type';
 import { usersAPI } from '../api/api';
 import { updateObjectInArray } from '../utils/object-helpers';
+import { AppStateType } from './redux-store';
+import { Dispatch } from 'redux';
 
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
@@ -23,7 +25,7 @@ let initialState = {
 type InitialStateType = typeof initialState
 
 
-const usersReducer = (state = initialState, action: ActionTypes): InitialStateType => {
+const usersReducer = (state = initialState, action: ActionsTypes): InitialStateType => {
   switch (action.type) {
     case FOLLOW: {
       return {
@@ -71,7 +73,7 @@ const usersReducer = (state = initialState, action: ActionTypes): InitialStateTy
   }
 };
 //! Action Creator
-type ActionTypes = FollowSuccessActionType | UnfollowSuccessActionType | SetUsersActionTyp | SetCurrentPageActionType |
+type ActionsTypes = FollowSuccessActionType | UnfollowSuccessActionType | SetUsersActionTyp | SetCurrentPageActionType |
   SetTotalUsersCountActionType | ToggleIsFetchingtActionType | ToggleFollowingProgressActionType
 
 //* followSuccess
@@ -139,8 +141,12 @@ export const toggleFollowingProgress = (isFetching: boolean, userId: number): To
 });
 
 //! dispatch
+
+type GetStateType = () => AppStateType
+type DispatchType = Dispatch<ActionsTypes>
+
 export const requestUsers = (page: number, pageSize: number) => {
-  return async (dispatch: any) => {
+  return async (dispatch: DispatchType, getState: GetStateType) => {
     dispatch(toggleIsFetching(true));
     dispatch(setCurrentPage(page));
 
