@@ -45,10 +45,8 @@ const authReducer = (state = initialState, action: any): InitialStateType => {
       return {
         ...state,
         ...action.payload,
-
       };
     }
-
     default:
       return state;
   }

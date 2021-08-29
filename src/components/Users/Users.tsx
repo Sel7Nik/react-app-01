@@ -11,8 +11,8 @@ type PropsUsersType = {
   users: Array<UserType>
   portionSize?: number
   followingInProgress: Array<number>
-  unfollow: () => void
-  follow: () => void
+  unfollow: (userId: number) => void
+  follow: (userId: number) => void
 }
 
 
