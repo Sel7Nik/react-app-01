@@ -1,4 +1,4 @@
-import { resultCodeEnum } from './../api/api';
+import { ResultCodeEnum, ResultCodeForCaptchaEnum } from './../api/api';
 import { stopSubmit } from 'redux-form';
 import { authAPI, securityAPI } from '../api/api';
 const SET_USER_DATA = 'react-app-01/auth/SET_USER_DATA';
@@ -87,7 +87,7 @@ export const getCaptchaUrlSuccess = (captchaUrl: string): GetCaptchaUrlSuccessAc
 
 export const getAuthUserData = () => async (dispatch: any) => {
   const meData = await authAPI.me();
-  if (meData.resultCode === resultCodeEnum.Success) {
+  if (meData.resultCode === ResultCodeEnum.Success) {
     let { id, login, email } = meData.data;
     dispatch(setAuthUserData(id, email, login, true));
   }
@@ -95,10 +95,10 @@ export const getAuthUserData = () => async (dispatch: any) => {
 export const login =
   (email: string, password: string, rememberMe: boolean, captcha: any) => async (dispatch: any) => {
     const loginData = await authAPI.login(email, password, rememberMe, captcha);
-    if (loginData.resultCode === resultCodeEnum.Success) {
+    if (loginData.resultCode === ResultCodeEnum.Success) {
       dispatch(getAuthUserData());
     } else {
-      if (loginData.resultCode === resultCodeEnum.CaptchaIsRequired) {
+      if (loginData.resultCode === ResultCodeForCaptchaEnum.CaptchaIsRequired) {
         dispatch(getCaptchaUrl());
       }
       let messages =
