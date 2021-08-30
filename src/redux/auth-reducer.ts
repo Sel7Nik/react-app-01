@@ -38,7 +38,7 @@ const authReducer = (state = initialState, action: any): InitialStateType => {
       return {
         ...state,
         ...action.payload,
-        usersId: "4"
+        usersId: 4
       };
     }
     case GET_CAPTCHA_URL_SUCCESS: {
@@ -85,9 +85,9 @@ export const getCaptchaUrlSuccess = (captchaUrl: string): GetCaptchaUrlSuccessAc
 });
 
 export const getAuthUserData = () => async (dispatch: any) => {
-  const response = await authAPI.me();
-  if (response.data.resultCode === 0) {
-    let { id, login, email } = response.data.data;
+  const meData = await authAPI.me();
+  if (meData.resultCode === 0) {
+    let { id, login, email } = meData.data;
     dispatch(setAuthUserData(id, email, login, true));
   }
 };
