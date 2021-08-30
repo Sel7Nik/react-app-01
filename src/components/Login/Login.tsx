@@ -12,11 +12,7 @@ type LoginFormOwnPropsType = {
 }
 
 const maxLength50 = maxLengthCreator(50);
-//!   LoginReduxForm
 
-const LoginReduxForm = reduxForm<LoginFormValuesType & LoginFormOwnPropsType>({
-  form: 'login',
-})(LoginForm);
 
 //!   LoginForm
 
@@ -37,7 +33,7 @@ type LoginFormValuesType = {
 
 }
 
-const LoginForm: React.FC<InjectedFormProps<LoginFormValuesType & LoginFormOwnPropsType> & LoginFormOwnPropsType> = ({ handleSubmit, error, captchaUrl }) => {
+const LoginForm: React.FC<InjectedFormProps<LoginFormValuesType, LoginFormOwnPropsType> & LoginFormOwnPropsType> = ({ handleSubmit, error, captchaUrl }) => {
   return (
     <form onSubmit={handleSubmit}>
       {createField('Email', 'email', [required, maxLength50], Input)}
@@ -45,7 +41,7 @@ const LoginForm: React.FC<InjectedFormProps<LoginFormValuesType & LoginFormOwnPr
         type: 'password',
       })}
       {createField(
-        null,
+        undefined,
         'rememberMe',
         [],
         Input,
@@ -68,7 +64,11 @@ const LoginForm: React.FC<InjectedFormProps<LoginFormValuesType & LoginFormOwnPr
   );
 };
 
+//!   LoginReduxForm
 
+const LoginReduxForm = reduxForm<LoginFormValuesType, LoginFormOwnPropsType>({
+  form: 'login',
+})(LoginForm);
 
 //!   Login
 const Login: React.FC<MapStatePropsType & MapDispatchPropsType> = (props) => {
