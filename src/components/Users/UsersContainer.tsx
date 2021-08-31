@@ -5,8 +5,6 @@ import Preloader from '../common/preloader/Preloader';
 import {
   follow,
   unfollow,
-  // setCurrentPage,
-  // toggleFollowingProgress,
   requestUsers,
 } from '../../redux/users-reducer';
 import { compose } from 'redux';
@@ -105,8 +103,7 @@ let mapStateToProps = (state: AppStateType): MapStatePropsUsersContainerType => 
 let mapDispatchToProps = {
   follow,
   unfollow,
-  // setCurrentPage,
-  // toggleFollowingProgress,
+
   requestUsers,
 };
 
