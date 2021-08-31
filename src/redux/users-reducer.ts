@@ -1,5 +1,5 @@
 import { UserType } from './../types/type';
-import { usersAPI } from '../api/api';
+import { usersAPI } from "../api/users-api";
 import { updateObjectInArray } from '../utils/object-helpers';
 import { ThunkAction } from 'redux-thunk';
 import { AppStateType, InferActionsTypes } from './redux-store';

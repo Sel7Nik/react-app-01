@@ -1,5 +1,6 @@
 import { stopSubmit } from 'redux-form';
-import { usersAPI, profileAPI } from '../api/api';
+import { profileAPI } from "../api/profile-api";
+import { usersAPI } from "../api/users-api";
 import { PhotosType, PostsDataType, ProfileType } from '../types/type';
 const ADD_POST = 'ADD-POST';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
