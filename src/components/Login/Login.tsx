@@ -4,7 +4,7 @@ import { InjectedFormProps, reduxForm } from 'redux-form';
 import { login } from '../../redux/auth-reducer';
 import { AppStateType } from '../../redux/redux-store';
 import { maxLengthCreator, required } from '../../utils/validators/validators';
-import { createField, Input, LoginFormValuesType } from '../common/FormsControls/FormsControls';
+import { createField, Input } from '../common/FormsControls/FormsControls';
 import css from './../common/FormsControls/FormsControls.module.css';
 
 type LoginFormOwnPropsType = {
@@ -30,11 +30,11 @@ type MapDispatchPropsType = {
 const LoginForm: React.FC<InjectedFormProps<LoginFormValuesType, LoginFormOwnPropsType> & LoginFormOwnPropsType> = ({ handleSubmit, error, captchaUrl }) => {
   return (
     <form onSubmit={handleSubmit}>
-      {createField('Email', 'email', [required, maxLength50], Input)}
-      {createField('Password', 'password', [required], Input, {
+      {createField<LoginFormValuesTypeKeys>('Email', 'email', [required, maxLength50], Input)}
+      {createField<LoginFormValuesTypeKeys>('Password', 'password', [required], Input, {
         type: 'password',
       })}
-      {createField(
+      {createField<LoginFormValuesTypeKeys>(
         undefined,
         'rememberMe',
         [],
@@ -48,7 +48,7 @@ const LoginForm: React.FC<InjectedFormProps<LoginFormValuesType, LoginFormOwnPro
       {captchaUrl && <img src={captchaUrl} alt={'captcha'} />}
 
       {captchaUrl &&
-        createField('Symbols from image', 'captcha', [required], Input)}
+        createField<LoginFormValuesTypeKeys>('Symbols from image', 'captcha', [required], Input)}
 
       {error && <div className={css.formSummaryError}>{error}</div>}
       <div>
@@ -63,6 +63,15 @@ const LoginForm: React.FC<InjectedFormProps<LoginFormValuesType, LoginFormOwnPro
 const LoginReduxForm = reduxForm<LoginFormValuesType, LoginFormOwnPropsType>({
   form: 'login',
 })(LoginForm);
+
+export type LoginFormValuesType = {
+  email: string
+  password: string
+  rememberMe: boolean
+  captcha: string
+}
+
+type LoginFormValuesTypeKeys = Extract<keyof LoginFormValuesType, string>
 
 //!   Login
 const Login: React.FC<MapStatePropsType & MapDispatchPropsType> = (props) => {

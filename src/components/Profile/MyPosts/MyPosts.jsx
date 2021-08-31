@@ -5,8 +5,8 @@ import { Field, reduxForm } from 'redux-form';
 import {
   maxLengthCreator,
   required,
-} from '../../../utils/validators/validators.js';
-import { Textarea } from '../../common/FormsControls/FormsControls.js';
+} from '../../../utils/validators/validators.ts';
+import { Textarea } from '../../common/FormsControls/FormsControls.tsx';
 
 const MyPosts = (props) => {
   console.log('RENDER');
