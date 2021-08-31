@@ -38,9 +38,18 @@ export const Input: React.FC<WrappedFieldProps> = (props) => {
   );
 };
 
+export type LoginFormValuesType = {
+  email: string
+  password: string
+  rememberMe: boolean
+  captcha: string
+}
+
+type LoginFormValuesTypeKeys = keyof LoginFormValuesType
+
 export const createField = (
   placeholder: string | undefined,
-  name: string,
+  name: LoginFormValuesTypeKeys,
   validators: Array<FieldValidatorType>,
   component: React.FC<WrappedFieldProps>,
   props = {},
