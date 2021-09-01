@@ -1,5 +1,5 @@
 import { profileAPI } from './profile-api';
-import { GetItemsType, instance, ResponseType } from './api';
+import { GetItemsType, instance, APIResponseType } from './api';
 
 
 
@@ -10,10 +10,10 @@ export const usersAPI = {
       .then((response) => response.data);
   },
   follow(userId: number) {
-    return instance.post<ResponseType>(`follow/${userId}`).then(res => res.data)
+    return instance.post<APIResponseType>(`follow/${userId}`).then(res => res.data)
   },
   unfollow(userId: number) {
-    return instance.delete(`follow/${userId}`).then(res => res.data) as Promise<ResponseType>
+    return instance.delete(`follow/${userId}`).then(res => res.data) as Promise<APIResponseType>
   },
   getProfile(userId: number) {
     console.warn('Obsolete metod.Please profileAPI object.');

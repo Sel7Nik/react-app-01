@@ -25,7 +25,7 @@ export type GetItemsType = {
   error: string | null
 }
 
-export type ResponseType<D = {}, RC = ResultCodeEnum> = {
+export type APIResponseType<D = {}, RC = ResultCodeEnum | ResultCodeForCaptchaEnum> = {
   data: D
   messages: Array<string>
   resultCode: RC
