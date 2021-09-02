@@ -1,9 +1,8 @@
-import { UserType } from './../types/type';
+import { UserType } from '../types/type';
 import { usersAPI } from "../api/users-api";
 import { updateObjectInArray } from '../utils/object-helpers';
-import { ThunkAction } from 'redux-thunk';
-import { AppStateType, InferActionsTypes } from './redux-store';
-import { Dispatch } from 'redux';
+import {BaseThunkType, InferActionsTypes} from './redux-store';
+import { Dispatch} from 'redux';
 
 
 let initialState = {
@@ -106,9 +105,11 @@ export const actions = {
 
 // type GetStateType = () => AppStateType
 type DispatchType = Dispatch<ActionsTypes>
-type ThunkType = ThunkAction<Promise<void>, AppStateType, unknown, ActionsTypes>
+type ThunkType= BaseThunkType<ActionsTypes>
+
+
 export const requestUsers = (page: number, pageSize: number): ThunkType => {
-  return async (dispatch, getState) => {
+  return async (dispatch) => {
     dispatch(actions.toggleIsFetching(true));
     dispatch(actions.setCurrentPage(page));
 
