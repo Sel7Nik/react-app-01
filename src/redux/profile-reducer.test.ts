@@ -1,17 +1,20 @@
-import profileReducer, { addPostActionCreator,  deletePost,} from './profile-reducer';
+import profileReducer, { actions } from './profile-reducer';
 
 let state = {
   postsData: [
-    { id: 1, message: 'Hi, how are you Ok', likeCount: '23' },
-    { id: 2, message: 'It is my first post', likeCount: '14' },
-    { id: 3, message: 'BlaBlaBla', likeCount: '11' },
-    { id: 4, message: 'Dadada', likeCount: '9' },
+    { id: 1, message: 'Hi, how are you Ok', likeCount: 23 },
+    { id: 2, message: 'It is my first post', likeCount: 14 },
+    { id: 3, message: 'BlaBlaBla', likeCount: 11 },
+    { id: 4, message: 'Dadada', likeCount: 9 },
   ],
+  profile: null,
+  status: '',
+  newPostText: '',
 };
 //! test 1
 test('new post should be added and length shoud be incremented', () => {
   // 1. test data
-  let action = addPostActionCreator('it-kama');
+  let action = actions.addPostActionCreator('it-kama');
   // 2.action
   let newState = profileReducer(state, action);
   // 3. expectation
@@ -20,7 +23,7 @@ test('new post should be added and length shoud be incremented', () => {
 //! test 2
 test('message of new post should be correct', () => {
   // 1. test data
-  let action = addPostActionCreator('it-kama');
+  let action = actions.addPostActionCreator('it-kama');
   // 2.action
   let newState = profileReducer(state, action);
   // 3. expectation
@@ -29,7 +32,7 @@ test('message of new post should be correct', () => {
 //! test 3
 test('after deleting length of messages shoud be decrement', () => {
   // 1. test data
-  let action = deletePost(1);
+  let action = actions.deletePost(1);
   // 2.action
   let newState = profileReducer(state, action);
   // 3. expectation
