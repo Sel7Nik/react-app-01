@@ -5,19 +5,19 @@ import { authAPI } from "../api/auth-api";
 import {BaseThunkType, InferActionsTypes} from "./redux-store";
 
 let initialState= {
-  usersId: null,
-  email: null,
-  login: null,
+  userId: null as number | null,
+  email: null as string | null,
+  login: null as string | null,
   isAuth: false,
-  captchaUrl: null,
+  captchaUrl: null as string | null,
 };
 
 
 
 const authReducer = (state = initialState, action: any): InitialStateType => {
   switch (action.type) {
-    case 'react-app-01/auth/SET_USER_DATA':
-    case 'react-app-01/auth/GET_CAPTCHA_URL_SUCCESS':
+    case 'SN/AUTH/SET_USER_DATA':
+    case 'SN/AUTH/GET_CAPTCHA_URL_SUCCESS':
       return {
         ...state,
         ...action.payload,
