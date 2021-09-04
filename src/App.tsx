@@ -8,31 +8,36 @@ import {
 import css from './App.module.css';
 import Navbar from './components/Navbar/Navbar.jsx';
 
-import UsersContainer from './components/Users/UsersContainer.tsx';
+import UsersContainer from './components/Users/UsersContainer';
 import HeaderContainer from './components/Header/HeaderContainer';
 import LoginPage from './components/Login/Login';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { initializeApp } from './redux/app-reducer.ts';
+import { initializeApp } from './redux/app-reducer';
 import { compose } from 'redux';
 import Preloader from './components/common/preloader/Preloader';
-import store from './redux/redux-store';
+import store, { AppStateType } from './redux/redux-store';
 import { Provider } from 'react-redux';
 
 // import DialogsContainer from './components/Dialogs/DialogsContainer';
-import ProfileContainer from './components/Profile/ProfileContainer.jsx';
+// import ProfileContainer from './components/Profile/ProfileContainer.jsx';
 import { withSuspense } from './hoc/withSuspense';
 
 const DialogsContainer = React.lazy(() =>
   import('./components/Dialogs/DialogsContainer')
 );
-// const ProfileContainer = React.lazy(() =>
-//   import('./components/Profile/ProfileContainer.jsx')
-// );
+const ProfileContainer = React.lazy(() =>
+  import('./components/Profile/ProfileContainer.jsx')
+);
 
-class App extends Component {
-  catchAllUnhandledErrors = (promiseRejectionEvent) => {
-    alert(promiseRejectionEvent);
+type MapPropsType = ReturnType<typeof mapStateToProps>
+type DispathPropsType = {
+  initializeApp: () => void
+}
+
+class App extends Component<MapPropsType & DispathPropsType> {
+  catchAllUnhandledErrors = (event: PromiseRejectionEvent) => {
+    alert("Something had gone wrong");
   };
 
   componentDidMount() {
@@ -75,16 +80,16 @@ class App extends Component {
     );
   }
 }
-let mapStateToProps = (state) => ({
+let mapStateToProps = (state: AppStateType) => ({
   initialized: state.app.initialized,
 });
 
-let AppContainer = compose(
+let AppContainer = compose<React.ComponentType>(
   withRouter,
   connect(mapStateToProps, { initializeApp })
 )(App);
 
-const MainApp = (props) => {
+const MainApp: React.FC = () => {
   return (
     <BrowserRouter basename={process.env.PUBLIC_URL}>
       <Provider store={store}>
