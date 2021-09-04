@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { UserType } from '../../types/type';
 import Paginator from '../common/Paginator/Paginator';
-import User from './User.jsx';
+import User from './User';
 
 type PropsUsersType = {
   totalItemsCount: number
