@@ -1,10 +1,15 @@
 import React from 'react';
 import Post from './Post/Post.jsx';
 import css from './MyPosts.module.css';
-import AddNewPostFormRedux from './AddNewPostForm';
+import AddNewPostFormRedux, { AddNewPostFormValuesType } from './AddNewPostForm';
+import { PostsDataType } from '../../../types/type.js';
 
-const MyPosts = (props) => {
-  console.log('RENDER');
+type PropsType = {
+  postsData: Array<PostsDataType>
+  addPost: (newPostText: string) => void
+}
+
+const MyPosts: React.FC<PropsType> = (props) => {
 
   let postsElement = [...props.postsData]
     .reverse()
@@ -12,7 +17,9 @@ const MyPosts = (props) => {
       <Post message={data.message} likeCount={data.likeCount} key={data.id} />
     ));
 
-  let onAddPost = (value) => {
+
+  let onAddPost = (value: AddNewPostFormValuesType) => {  // нужен импорт
+    // let onAddPost = (value: { newPostText: string }) => {
     props.addPost(value.newPostText);
   };
 

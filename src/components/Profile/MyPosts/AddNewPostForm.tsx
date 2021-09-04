@@ -4,7 +4,7 @@ import { createField, Textarea } from '../../common/FormsControls/FormsControls'
 
 
 
-type AddNewPostFormValuesType = {
+export type AddNewPostFormValuesType = {
   newPostText: string
 }
 export type GetStringKeys<T> = Extract<keyof T, string> // для сокращения записи ниже
@@ -18,12 +18,6 @@ const AddNewPostForm: React.FC<InjectedFormProps<AddNewPostFormValuesType> & Pro
     <form onSubmit={props.handleSubmit}>
       <div>
         {createField<AddNewPostFormValuesTypeKeys>('Post message', 'newPostText', [required], Textarea)}
-        {/* <Field
-          component={Textarea}
-          name="newPostText"
-          validate={[required]}
-          placeholder={'Post message'} />
-        <button>Add post</button> */}
       </div>
     </form>
   );
