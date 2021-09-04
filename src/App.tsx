@@ -6,7 +6,7 @@ import {
   withRouter,
 } from 'react-router-dom';
 import css from './App.module.css';
-import Navbar from './components/Navbar/Navbar.jsx';
+import Navbar from './components/Navbar/Navbar';
 
 import UsersContainer from './components/Users/UsersContainer';
 import HeaderContainer from './components/Header/HeaderContainer';
@@ -23,12 +23,16 @@ import { Provider } from 'react-redux';
 // import ProfileContainer from './components/Profile/ProfileContainer.jsx';
 import { withSuspense } from './hoc/withSuspense';
 
+
 const DialogsContainer = React.lazy(() =>
   import('./components/Dialogs/DialogsContainer')
 );
 const ProfileContainer = React.lazy(() =>
   import('./components/Profile/ProfileContainer.jsx')
 );
+
+const DialogsSuspense = withSuspense(DialogsContainer)
+const ProfileSuspense = withSuspense(ProfileContainer)
 
 type MapPropsType = ReturnType<typeof mapStateToProps>
 type DispathPropsType = {
@@ -60,11 +64,11 @@ class App extends Component<MapPropsType & DispathPropsType> {
           <Switch>
             <Route exact path="/" render={() => <Redirect to={'/profile'} />} />
 
-            <Route path="/dialogs" render={withSuspense(DialogsContainer)} />
+            <Route path="/dialogs" render={() => <DialogsSuspense />} />
 
             <Route
               path="/profile/:userId?"
-              render={withSuspense(ProfileContainer)}
+              render={() => <ProfileSuspense />}
             />
 
             <Route

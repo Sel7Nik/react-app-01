@@ -7,9 +7,9 @@ import {
   updateStatus,
   savePhoto,
   saveProfile,
-} from '../../redux/profile-reducer.ts';
+} from '../../redux/profile-reducer';
 import { withRouter } from 'react-router-dom';
-import { withAuthRedirect } from '../../hoc/withAuthRedirect.js';
+import { withAuthRedirect } from '../../hoc/withAuthRedirect';
 import { compose } from 'redux';
 
 class ProfileContainer extends React.Component {
