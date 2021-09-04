@@ -2,7 +2,11 @@ import React from 'react';
 import MyPostsContainer from './MyPosts/MyPostsContainer.jsx';
 import ProfileInfo from './ProfileInfo/ProfileInfo.jsx';
 
-const Profile = (props) => {
+type PropsProfileType = {
+
+}
+
+const Profile: React.FC<PropsProfileType> = (props) => {
   return (
     <div>
       <ProfileInfo

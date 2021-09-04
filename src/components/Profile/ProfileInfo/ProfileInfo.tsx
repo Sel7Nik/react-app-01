@@ -4,8 +4,19 @@ import userPhoto from '../../../images/avatar-anonymous-face.png';
 import css from './ProfileInfo.module.css';
 import ProfileStatusWithHooks from './ProfileStatusWithHooks';
 import ProfileDataForm from './ProfileDataForm';
+import { ProfileType } from '../../../types/type';
 
-const ProfileInfo = ({
+type PropsProfileInfo = {
+  profile: ProfileType
+  status: string
+  updateStatus,
+  isOwner: boolean
+  savePhoto:
+  saveProfile,
+}
+
+
+const ProfileInfo: React.FC<PropsProfileInfo> = ({
   profile,
   status,
   updateStatus,

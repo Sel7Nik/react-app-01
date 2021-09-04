@@ -12,9 +12,7 @@ type PropsType = {
   sendMessage: (messageText: string) => void
 }
 
-export type NewMessageFormType = {
-  newMessageBody: string
-}
+
 
 
 
