@@ -7,7 +7,7 @@ import { createField, Textarea } from '../../common/FormsControls/FormsControls'
 export type AddNewPostFormValuesType = {
   newPostText: string
 }
-export type GetStringKeys<T> = Extract<keyof T, string> // для сокращения записи ниже
+type GetStringKeys<T> = Extract<keyof T, string> // для сокращения записи ниже
 // type AddNewPostFormValuesTypeKeys = Extract<keyof AddNewPostFormValuesType, string>
 type AddNewPostFormValuesTypeKeys = GetStringKeys<AddNewPostFormValuesType>
 

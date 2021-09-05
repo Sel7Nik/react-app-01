@@ -1,8 +1,8 @@
 import React from 'react';
-import Post from './Post/Post.jsx';
+import Post from './Post/Post';
 import css from './MyPosts.module.css';
 import AddNewPostFormRedux, { AddNewPostFormValuesType } from './AddNewPostForm';
-import { PostsDataType } from '../../../types/type.js';
+import { PostsDataType } from '../../../types/type';
 
 type PropsType = {
   postsData: Array<PostsDataType>
