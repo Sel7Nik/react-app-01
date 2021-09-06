@@ -1,4 +1,4 @@
-const Settings = (p) => {
+const Settings = () => {
   return <div>Settings</div>;
 };
 

@@ -1,6 +1,7 @@
+import { FC } from 'react';
 import preloader from './Preloader.svg';
 
-let Preloader = (props) => {
+let Preloader: FC = () => {
   return (
     <div>
       <img src={preloader} alt="svg" />

@@ -1,7 +1,7 @@
 // import { NavLink } from 'react-router-dom';
 import s from './Dialogs.module.css';
-import DialogItem from './DialogItem/DialogItem.jsx';
-import Message from './Message/Message.jsx';
+import DialogItem from './DialogItem/DialogItem';
+import Message from './Message/Message';
 // import { Redirect } from 'react-router-dom';
 import { InitialStateType } from '../../redux/dialogs-reducer';
 import AddMessageForm from './AddMessageForm/AddMessageForm';
