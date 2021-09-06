@@ -1,6 +1,6 @@
-import s from './Music.module.css';
+// import css from './Music.module.css';
 
-const Music = (p) => {
+const Music = () => {
   return <div>Music</div>;
 };
 
