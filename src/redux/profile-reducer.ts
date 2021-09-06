@@ -13,7 +13,6 @@ let initialState = {
   ] as Array<PostsDataType>,
   profile: null as ProfileType | null,
   status: '',
-  newPostText: '',
 
 };
 
@@ -30,7 +29,6 @@ const profileReducer = (state = initialState, action: ActionsType): initialState
             likeCount: 0,
           },
         ],
-        newPostText: '',
       };
     }
 

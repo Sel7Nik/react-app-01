@@ -24,12 +24,8 @@ import { Provider } from 'react-redux';
 import { withSuspense } from './hoc/withSuspense';
 
 
-const DialogsContainer = React.lazy(() =>
-  import('./components/Dialogs/DialogsContainer')
-);
-const ProfileContainer = React.lazy(() =>
-  import('./components/Profile/ProfileContainer')
-);
+const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'));
+const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer'));
 
 const DialogsSuspense = withSuspense(DialogsContainer)
 const ProfileSuspense = withSuspense(ProfileContainer)

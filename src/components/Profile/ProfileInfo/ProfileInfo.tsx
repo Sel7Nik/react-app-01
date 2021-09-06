@@ -1,13 +1,13 @@
 import React, { ChangeEvent, useState } from 'react';
-import Preloader from '../../common/preloader/Preloader';
-import userPhoto from '../../../images/avatar-anonymous-face.png';
 import css from './ProfileInfo.module.css';
+import Preloader from '../../common/preloader/Preloader';
 import ProfileStatusWithHooks from './ProfileStatusWithHooks';
+import userPhoto from '../../../images/avatar-anonymous-face.png';
 import ProfileDataForm from './ProfileDataForm';
 import { ContactsType, ProfileType } from '../../../types/type';
 
 type PropsProfileInfoType = {
-  profile: ProfileType
+  profile: ProfileType | null
   status: string
   updateStatus: (status: string) => void
   isOwner: boolean
@@ -33,7 +33,7 @@ const ProfileInfo: React.FC<PropsProfileInfoType> = ({
 
   };
 
-  const onSubmit = (formData) => {
+  const onSubmit = (formData: ProfileType) => {
     saveProfile(formData).then(() => {
       setEditMode(false);
     });
@@ -46,21 +46,13 @@ const ProfileInfo: React.FC<PropsProfileInfoType> = ({
           alt="large"
           className={css.mainPhoto}
         />
-        {isOwner && <input type={'file'} onChange={onMainPhotoSelected} />}
+        {!isOwner && <input type={'file'} onChange={onMainPhotoSelected} />}
 
-        {editMode ? (
-          <ProfileDataForm
-            initialValues={profile}
-            onSubmit={onSubmit}
-            isOwner={isOwner}
-            profile={profile}
-          />
-        ) : (
-          <ProfileData
-            goToEditMode={() => setEditMode(true)}
-            profile={profile}
-          />
-        )}
+        {editMode ?
+          <ProfileDataForm initialValues={profile} onSubmit={onSubmit} profile={profile} />
+          :
+          <ProfileData goToEditMode={() => setEditMode(true)} profile={profile} isOwner={false} />
+        }
 
         <ProfileStatusWithHooks status={status} updateStatus={updateStatus} />
       </div>
@@ -77,7 +69,7 @@ type PropsProfileDataType = {
 const ProfileData: React.FC<PropsProfileDataType> = ({ profile, isOwner, goToEditMode }) => {
   return (
     <div>
-      {!isOwner && (
+      {isOwner && (
         <div>
           <button onClick={goToEditMode}>edit</button>
         </div>

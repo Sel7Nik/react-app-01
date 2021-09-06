@@ -12,9 +12,7 @@ import { ProfileType } from '../../../types/type';
 type GetStringKeys<T> = Extract<keyof T, string> // для сокращения записи ниже
 
 type PropsProfileDataFormType = {
-  handleSubmit: () => void
   profile: ProfileType
-  error: string
 }
 type ProfileValuesTypeKey = GetStringKeys<ProfileType>
 

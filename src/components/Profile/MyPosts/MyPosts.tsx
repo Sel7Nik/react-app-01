@@ -4,17 +4,19 @@ import css from './MyPosts.module.css';
 import AddNewPostFormRedux, { AddNewPostFormValuesType } from './AddNewPostForm';
 import { PostsDataType } from '../../../types/type';
 
-type PropsType = {
+export type MapPropsType = {
   postsData: Array<PostsDataType>
+}
+export type DispatchPropsType = {
   addPost: (newPostText: string) => void
 }
 
-const MyPosts: React.FC<PropsType> = (props) => {
+const MyPosts: React.FC<MapPropsType & DispatchPropsType> = (props) => {
 
   let postsElement = [...props.postsData]
     .reverse()
     .map((data) => (
-      <Post message={data.message} likeCount={data.likeCount} key={data.id} />
+      <Post message={data.message} likesCount={data.likeCount} key={data.id} />
     ));
 
 
