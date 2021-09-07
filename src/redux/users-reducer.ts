@@ -28,7 +28,7 @@ const usersReducer = (state = initialState, action: ActionsTypes): InitialStateT
       return {
         ...state,
         users: updateObjectInArray(state.users, action.userId, 'id', {
-          followed: true,
+          followed: false,
         }),
       };
     }
@@ -145,6 +145,6 @@ export const unfollow = (userId: number): ThunkType => {
 
 export default usersReducer;
 
-type InitialStateType = typeof initialState
+export type InitialStateType = typeof initialState
 type ActionsTypes = InferActionsTypes<typeof actions>
 type ThunkType = BaseThunkType<ActionsTypes>
