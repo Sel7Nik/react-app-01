@@ -1,5 +1,4 @@
-import { actions, follow, unfollow } from './users-reducer'
-import { usersAPI } from '../api/users-api'
+import { follow } from './users-reducer'
 import { APIResponseType, ResultCodeEnum } from '../api/api'
 
 
