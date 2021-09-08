@@ -57,21 +57,24 @@ const usersSearchFormValidate = (values: any) => {
   return errors
 }
 
+type UsersSearchFormObjectType = {
+  term: string,
+}
+
 const UsersSearchForm = () => {
+
+  const submit = (values: UsersSearchFormObjectType, { setSubmitting }: { setSubmitting: (isSubmitting: boolean) => void }) => { }
+
+
   return <div>
     <Formik
-      initialValues={{ email: '', password: '' }}
+      initialValues={{ term: '' }}
       validate={usersSearchFormValidate}
-      onSubmit={(values, { setSubmitting }) => {
-        setTimeout(() => {
-          alert(JSON.stringify(values, null, 2));
-          setSubmitting(false);
-        }, 400);
-      }}
+      onSubmit={submit}
     >
       {({ isSubmitting }) => (
         <Form>
-          <Field type="email" name="email" />
+          <Field type="text" name="text" />
           <Field type="password" name="password" />
           <button type="submit" disabled={isSubmitting}>
             Find
