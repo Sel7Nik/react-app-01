@@ -5,7 +5,7 @@ import { authAPI } from "../api/auth-api";
 import { BaseThunkType, InferActionsTypes } from "./redux-store";
 
 let initialState = {
-  userId: null as number | null,
+  userId: null as (number | null),
   email: null as string | null,
   login: null as string | null,
   isAuth: false,
@@ -32,14 +32,14 @@ export const actions = {
     type: 'SN/AUTH/SET_USER_DATA', payload: { userId, email, login, isAuth },
   } as const),
 
-  getCaptchaUrlSuccess: (captchaUrl: string | null) => ({
+  getCaptchaUrlSuccess: (captchaUrl: string) => ({
     type: 'SN/AUTH/GET_CAPTCHA_URL_SUCCESS', payload: { captchaUrl },
   } as const)
 
 }
 
 export const getAuthUserData = (): ThunkType => async (dispatch) => {
-  const meData = await authAPI.me()
+  let meData = await authAPI.me()
   if (meData.resultCode === ResultCodeEnum.Success) {
     let { id, login, email } = meData.data;
     dispatch(actions.setAuthUserData(id, email, login, true))
@@ -47,7 +47,7 @@ export const getAuthUserData = (): ThunkType => async (dispatch) => {
 };
 export const login =
   (email: string, password: string, rememberMe: boolean, captcha: string): ThunkType => async (dispatch) => {
-    const loginData = await authAPI.login(email, password, rememberMe, captcha);
+    let loginData = await authAPI.login(email, password, rememberMe, captcha);
     if (loginData.resultCode === ResultCodeEnum.Success) {
       dispatch(getAuthUserData());
     } else {
