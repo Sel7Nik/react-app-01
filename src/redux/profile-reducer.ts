@@ -1,6 +1,5 @@
 import { FormAction, stopSubmit } from 'redux-form';
 import { profileAPI } from "../api/profile-api";
-import { usersAPI } from "../api/users-api";
 import { PhotosType, PostsDataType, ProfileType } from '../types/type';
 import { BaseThunkType, InferActionsTypes } from "./redux-store";
 

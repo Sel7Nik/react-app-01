@@ -12,6 +12,10 @@ let initialState = {
   currentPage: 1,
   isFetching: false,
   followingInProgress: [] as Array<number>, // array of users id
+  filter: {
+    term: '',
+    friend: null as null | boolean
+  }
 };
 
 const usersReducer = (state = initialState, action: ActionsTypes): InitialStateType => {
@@ -147,5 +151,6 @@ export const unfollow = (userId: number): ThunkType => {
 export default usersReducer;
 
 export type InitialStateType = typeof initialState
+export type FilterType = typeof initialState.filter
 type ActionsTypes = InferActionsTypes<typeof actions>
 type ThunkType = BaseThunkType<ActionsTypes>
