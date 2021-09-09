@@ -71,7 +71,7 @@ class UsersContainer extends React.Component<PropsUsersContainerType> {
 
   onFilterChanged = (filter: FilterType) => {
     const { pageSize, currentPage } = this.props;
-    this.props.requestUsers(pageSize, currentPage, filter.term);
+    this.props.requestUsers(currentPage, pageSize, filter.term);
   }
 
   render() {
