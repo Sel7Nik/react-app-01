@@ -6,6 +6,7 @@ import {
   follow,
   unfollow,
   requestUsers,
+  FilterType,
 } from '../../redux/users-reducer';
 import { compose } from 'redux';
 import {
@@ -67,6 +68,10 @@ class UsersContainer extends React.Component<PropsUsersContainerType> {
     const { pageSize } = this.props;
     this.props.requestUsers(pageNumber, pageSize, '');
   };
+
+  onFilterChanged = (filter: FilterType) => {
+
+  }
 
   render() {
     return (

@@ -111,8 +111,8 @@ export const requestUsers = (page: number, pageSize: number, term: string): Thun
   return async (dispatch) => {
     dispatch(actions.toggleIsFetching(true));
     dispatch(actions.setCurrentPage(page));
-
-    const data = await usersAPI.getUsers(page, pageSize);
+    dispatch(actions.setFilter(term))
+    const data = await usersAPI.getUsers(page, pageSize, term);
     dispatch(actions.toggleIsFetching(false));
     dispatch(actions.setUsers(data.items));
     dispatch(actions.setTotalUsersCount(data.totalCount));

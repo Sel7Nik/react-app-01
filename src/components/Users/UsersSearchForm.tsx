@@ -1,9 +1,10 @@
 import React from 'react';
 import { Formik, Form, Field } from "formik";
+import { FilterType } from '../../redux/users-reducer';
 
 export const UsersSearchForm = () => {
 
-  const submit = (values: UsersSearchFormObjectType, { setSubmitting }: { setSubmitting: (isSubmitting: boolean) => void; }) => { };
+  const submit = (values: FilterType, { setSubmitting }: { setSubmitting: (isSubmitting: boolean) => void; }) => { };
   setTimeout(() => {
     alert("edsrgfdgdsfgfdsgds");
     // setSubmitting(false);
@@ -30,6 +31,4 @@ const usersSearchFormValidate = (values: any) => {
   const errors = {};
   return errors;
 };
-type UsersSearchFormObjectType = {
-  term: string;
-};
+
