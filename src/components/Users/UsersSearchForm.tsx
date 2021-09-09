@@ -2,13 +2,16 @@ import React from 'react';
 import { Formik, Form, Field } from "formik";
 import { FilterType } from '../../redux/users-reducer';
 
-export const UsersSearchForm = () => {
+type UserSearchFormPropsType = {
+  onFilterChanged: (filter: FilterType) => void
+}
 
-  const submit = (values: FilterType, { setSubmitting }: { setSubmitting: (isSubmitting: boolean) => void; }) => { };
-  setTimeout(() => {
-    alert("edsrgfdgdsfgfdsgds");
-    // setSubmitting(false);
-  }, 400);
+export const UsersSearchForm: React.FC<UserSearchFormPropsType> = (props) => {
+
+  const submit = (values: FilterType, { setSubmitting }: { setSubmitting: (isSubmitting: boolean) => void; }) => {
+    props.onFilterChanged(values)
+
+  }
 
   return <div>
     <Formik

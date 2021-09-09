@@ -70,7 +70,8 @@ class UsersContainer extends React.Component<PropsUsersContainerType> {
   };
 
   onFilterChanged = (filter: FilterType) => {
-
+    const { pageSize, currentPage } = this.props;
+    this.props.requestUsers(pageSize, currentPage, filter.term);
   }
 
   render() {
@@ -83,6 +84,7 @@ class UsersContainer extends React.Component<PropsUsersContainerType> {
           pageSize={this.props.pageSize}
           currentPage={this.props.currentPage}
           onPageChanged={this.onPageChanged}
+          onFilterChanged={this.onFilterChanged}
           users={this.props.users}
           follow={this.props.follow}
           unfollow={this.props.unfollow}
