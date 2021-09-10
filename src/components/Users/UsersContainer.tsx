@@ -16,6 +16,7 @@ import {
   getIsFetching,
   getPageSize,
   getTotalUsersCount,
+  getUsersFilter,
 } from '../../redux/users-selectors';
 import { UserType } from '../../types/type';
 import { AppStateType } from '../../redux/redux-store';
@@ -30,6 +31,7 @@ type MapStatePropsUsersContainerType = {
   isFetching: boolean
   users: Array<UserType>
   followingInProgress: Array<number>
+  filter: FilterType
 }
 
 type MapDispatchPropsUsersContainerType = {
@@ -65,13 +67,13 @@ class UsersContainer extends React.Component<PropsUsersContainerType> {
   }
 
   onPageChanged = (pageNumber: number) => {
-    const { pageSize } = this.props;
-    this.props.requestUsers(pageNumber, pageSize, '');
+    const { pageSize, filter } = this.props;
+    this.props.requestUsers(pageNumber, pageSize, filter.term);
   };
 
   onFilterChanged = (filter: FilterType) => {
-    const { pageSize, currentPage } = this.props;
-    this.props.requestUsers(currentPage, pageSize, filter.term);
+    const { pageSize } = this.props;
+    this.props.requestUsers(1, pageSize, filter.term);
   }
 
   render() {
@@ -89,7 +91,6 @@ class UsersContainer extends React.Component<PropsUsersContainerType> {
           follow={this.props.follow}
           unfollow={this.props.unfollow}
           followingInProgress={this.props.followingInProgress}
-        // toggleFollowingProgress={this.props.toggleFollowingProgress}
         />
       </>
     );
@@ -104,6 +105,7 @@ let mapStateToProps = (state: AppStateType): MapStatePropsUsersContainerType => 
     currentPage: getCurrentPage(state),
     isFetching: getIsFetching(state),
     followingInProgress: getFollowingInProgress(state),
+    filter: getUsersFilter(state)
   };
 };
 

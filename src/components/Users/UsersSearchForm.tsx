@@ -9,8 +9,8 @@ type UserSearchFormPropsType = {
 export const UsersSearchForm: React.FC<UserSearchFormPropsType> = (props) => {
 
   const submit = (values: FilterType, { setSubmitting }: { setSubmitting: (isSubmitting: boolean) => void; }) => {
-    props.onFilterChanged(values)
-
+    props.onFilterChanged(values);
+    setSubmitting(false)
   }
 
   return <div>
