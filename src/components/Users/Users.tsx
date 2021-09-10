@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { useSelector } from 'react-redux';
 import { FilterType } from '../../redux/users-reducer';
-import { getTotalUsersCount } from '../../redux/users-selectors';
+import { getCurrentPage, getPageSize, getTotalUsersCount } from '../../redux/users-selectors';
 import { UserType } from '../../types/type';
 import Paginator from '../common/Paginator/Paginator';
 import User from './User';
@@ -9,8 +9,8 @@ import { UsersSearchForm } from './UsersSearchForm';
 
 type PropsUsersType = {
   // totalItemsCount: number
-  pageSize: number
-  currentPage: number
+  // pageSize: number
+  // currentPage: number
   onPageChanged: (pageNumber: number) => void
   onFilterChanged: (filter: FilterType) => void
   users: Array<UserType>
@@ -22,8 +22,6 @@ type PropsUsersType = {
 
 
 let Users: FC<PropsUsersType> = ({
-  currentPage,
-  pageSize,
   onPageChanged,
   users,
   portionSize,
@@ -31,6 +29,8 @@ let Users: FC<PropsUsersType> = ({
 }) => {
 
   const totalItemsCount = useSelector(getTotalUsersCount)
+  const currentPage = useSelector(getCurrentPage)
+  const pageSize = useSelector(getPageSize)
   return (
     <div>
       <UsersSearchForm onFilterChanged={props.onFilterChanged} />
