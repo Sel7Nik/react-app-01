@@ -8,7 +8,7 @@ import {
 import css from './App.module.css';
 import Navbar from './components/Navbar/Navbar';
 
-import UsersContainer from './components/Users/UsersContainer';
+import { UserPage } from './components/Users/UsersContainer';
 import HeaderContainer from './components/Header/HeaderContainer';
 import LoginPage from './components/Login/Login';
 import React, { Component } from 'react';
@@ -19,8 +19,6 @@ import Preloader from './components/common/preloader/Preloader';
 import store, { AppStateType } from './redux/redux-store';
 import { Provider } from 'react-redux';
 
-// import DialogsContainer from './components/Dialogs/DialogsContainer';
-// import ProfileContainer from './components/Profile/ProfileContainer.jsx';
 import { withSuspense } from './hoc/withSuspense';
 
 
@@ -37,7 +35,7 @@ type DispathPropsType = {
 
 class App extends Component<MapPropsType & DispathPropsType> {
   catchAllUnhandledErrors = (event: PromiseRejectionEvent) => {
-    alert("Something had gone wrong");
+    // alert("Something had gone wrong");
   };
 
   componentDidMount() {
@@ -69,7 +67,7 @@ class App extends Component<MapPropsType & DispathPropsType> {
 
             <Route
               path="/users"
-              render={() => <UsersContainer pageTitle={'react typescript'} />}
+              render={() => <UserPage pageTitle={'react typescript'} />}
             />
             <Route path="/login" render={() => <LoginPage />} />
 
