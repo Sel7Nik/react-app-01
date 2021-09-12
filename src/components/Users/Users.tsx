@@ -27,18 +27,37 @@ export const Users: FC<PropsUsersType> = (props) => {
 
   const dispatch = useDispatch()
   const history = useHistory()
+  const querystring = require('querystring');
+  // useEffect(() => {
+  //   history.push({
+  //     pathname: '/users',
+  //     search: `?term=${filter.term}&friend=${filter.friend}&page=${currentPage}`
+  //   })
+  // }, [filter, history, currentPage])
 
   useEffect(() => {
+    const parsed = querystring.parse(history.location.search.substr(1))
+    let actualPage = currentPage
+    let actualFilter = filter
 
-    history.push({
-      pathname: '/users',
-      search: `?term=${filter.term}&friend=${filter.friend}`
-    })
-  }, [filter, history])
+    if (!!parsed.page) actualPage = Number(parsed.page)
 
-  useEffect(() => {
-    dispatch(requestUsers(currentPage, pageSize, filter))
-  }, [currentPage, dispatch, filter, pageSize]);
+    if (!!parsed.term) actualFilter = { ...actualFilter, term: parsed.term as string }
+
+    switch (parsed.friend) {
+      case "null":
+        actualFilter = { ...actualFilter, friend: null }
+        break;
+      case "true":
+        actualFilter = { ...actualFilter, friend: true }
+        break;
+      case "false":
+        actualFilter = { ...actualFilter, friend: false }
+        break;
+    }
+
+    dispatch(requestUsers(actualPage, pageSize, actualFilter))
+  }, []);
 
   const onPageChanged = (pageNumber: number) => {
     dispatch(requestUsers(pageNumber, pageSize, filter))
