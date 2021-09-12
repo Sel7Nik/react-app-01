@@ -10,7 +10,6 @@ import Navbar from './components/Navbar/Navbar';
 
 import { UserPage } from './components/Users/UsersContainer';
 import HeaderContainer from './components/Header/HeaderContainer';
-import LoginPage from './components/Login/Login';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { initializeApp } from './redux/app-reducer';
@@ -20,6 +19,7 @@ import store, { AppStateType } from './redux/redux-store';
 import { Provider } from 'react-redux';
 
 import { withSuspense } from './hoc/withSuspense';
+import { LoginPage } from './components/Login/LoginPage';
 
 
 const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'));
