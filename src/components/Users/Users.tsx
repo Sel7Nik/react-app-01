@@ -28,12 +28,6 @@ export const Users: FC<PropsUsersType> = (props) => {
   const dispatch = useDispatch()
   const history = useHistory()
   const querystring = require('querystring');
-  // useEffect(() => {
-  //   history.push({
-  //     pathname: '/users',
-  //     search: `?term=${filter.term}&friend=${filter.friend}&page=${currentPage}`
-  //   })
-  // }, [filter, history, currentPage])
 
   useEffect(() => {
     const parsed = querystring.parse(history.location.search.substr(1))
@@ -58,6 +52,15 @@ export const Users: FC<PropsUsersType> = (props) => {
 
     dispatch(requestUsers(actualPage, pageSize, actualFilter))
   }, []);
+
+  useEffect(() => {
+    history.push({
+      pathname: '/users',
+      search: `?term=${filter.term}&friend=${filter.friend}&page=${currentPage}`
+    })
+  }, [filter, history, currentPage])
+
+
 
   const onPageChanged = (pageNumber: number) => {
     dispatch(requestUsers(pageNumber, pageSize, filter))
