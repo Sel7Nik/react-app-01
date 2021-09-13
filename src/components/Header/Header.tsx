@@ -1,19 +1,25 @@
-import { Row, Col, Menu, Avatar, Layout } from 'antd';
+import { Row, Col, Menu, Avatar, Layout, Button } from 'antd';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import css from './Header.module.css';
 import { UserOutlined } from '@ant-design/icons';
+import { useDispatch, useSelector } from 'react-redux';
+import { currentUserLogin, selectIsAuth } from '../../redux/auth-selectors';
+import { logout } from '../../redux/auth-reducer';
+
 export type MapPropsHeaderType = {
-  isAuth: boolean
-  login: string | null
-}
-export type DispatchPropsHeaderType = {
-  logout: () => void
 }
 
-export const Header: React.FC<MapPropsHeaderType & DispatchPropsHeaderType> = (props) => {
+export const Header: React.FC<MapPropsHeaderType> = (props) => {
 
-  const isAuth = useSelector
+  const isAuth = useSelector(selectIsAuth)
+  const login = useSelector(currentUserLogin)
+
+  const dispatch = useDispatch()
+
+  const logoutCallback = () => {
+    dispatch(logout())
+  }
 
   const { Header } = Layout;
 
@@ -36,7 +42,15 @@ export const Header: React.FC<MapPropsHeaderType & DispatchPropsHeaderType> = (p
           </Menu>
         </Col>
         <Col span={4}>
-          <Avatar style={{ backgroundColor: '#87d068' }} icon={<UserOutlined />} />
+
+          {isAuth ? (
+            <div>
+              <Avatar style={{ backgroundColor: '#87d068' }} icon={<UserOutlined />} />
+              {login} = <Button onClick={logoutCallback}>Log out</Button>
+            </div>
+          ) : (
+            <Link to={'/login'}>LOGIN</Link>
+          )}
         </Col>
       </Row>
 
