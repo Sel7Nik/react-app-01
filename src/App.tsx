@@ -56,8 +56,6 @@ class App extends Component<MapPropsType & DispathPropsType> {
     if (!this.props.initialized)
       return <Preloader />;
 
-
-
     return (
       <Layout>
         <Header />
@@ -124,34 +122,8 @@ class App extends Component<MapPropsType & DispathPropsType> {
             </Content>
           </Layout>
         </Content>
-        <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
+        <Footer style={{ textAlign: 'center' }}>Semenov Nikolay 2021</Footer>
       </Layout>
-
-
-      // <div className={css.app__wrapper}>
-      //   <HeaderContainer />
-      //   <Navbar />
-      //   <div className={css.app__wrapper__content}>
-      //     <Switch>
-      //       <Route exact path="/" render={() => <Redirect to={'/profile'} />} />
-
-      //       <Route path="/dialogs" render={() => <DialogsSuspense />} />
-
-      //       <Route
-      //         path="/profile/:userId?"
-      //         render={() => <ProfileSuspense />}
-      //       />
-
-      //       <Route
-      //         path="/users"
-      //         render={() => <UserPage pageTitle={'react typescript'} />}
-      //       />
-      //       <Route path="/login" render={() => <LoginPage />} />
-
-      //       <Route path="*" render={() => <div>404 NOT FOUND</div>} />
-      //     </Switch>
-      //   </div>
-      // </div>
     );
   };
 }
