@@ -1,43 +1,33 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import s from './Navbar.module.css';
+import css from './Navbar.module.css';
 
 
 const Navbar: React.FC = () => {
   return (
-    <nav className={s.menu}>
-      <ul className={s.list}>
-        <li className={s.item}>
-          <NavLink className={s.link} activeClassName={s.active} to="/profile">
+    <nav className={css.menu}>
+
+
+      <ul className={css.list}>
+
+        <li className={css.item}>
+          <NavLink className={css.link} activeClassName={css.active} to="/profile">
             Главная
           </NavLink>
         </li>
-        {/* <li className={s.item}> */}
-        <li className={s.item}>
-          <NavLink className={s.link} activeClassName={s.active} to="/dialogs">
+
+        <li className={css.item}>
+          <NavLink className={css.link} activeClassName={css.active} to="/dialogs">
             Messages
           </NavLink>
         </li>
-        <li className={s.item}>
-          <NavLink className={s.link} activeClassName={s.active} to="/users">
+
+        <li className={css.item}>
+          <NavLink className={css.link} activeClassName={css.active} to="/users">
             Users
           </NavLink>
         </li>
-        {/* <li className={s.item}>
-          <NavLink className={s.link} activeClassName={s.active} to="/news">
-            News
-          </NavLink>
-        </li>
-        <li className={s.item}>
-          <NavLink className={s.link} activeClassName={s.active} to="/music">
-            Music
-          </NavLink>
-        </li>
-        <li className={s.item}>
-          <NavLink className={s.link} activeClassName={s.active} to="/settings">
-            Settings
-          </NavLink>
-        </li> */}
+
       </ul>
     </nav>
   );

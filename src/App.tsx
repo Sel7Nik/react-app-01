@@ -1,5 +1,6 @@
 import {
   BrowserRouter,
+  Link,
   Redirect,
   Route,
   Switch,
@@ -7,9 +8,7 @@ import {
 } from 'react-router-dom';
 import css from './App.module.css';
 import 'antd/dist/antd.css';
-import Navbar from './components/Navbar/Navbar';
 import { UserPage } from './components/Users/UsersContainer';
-import HeaderContainer from './components/Header/HeaderContainer';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { initializeApp } from './redux/app-reducer';
@@ -23,12 +22,13 @@ import { LoginPage } from './components/Login/LoginPage';
 
 import { Layout, Menu, Breadcrumb } from 'antd';
 import { UserOutlined, LaptopOutlined, NotificationOutlined } from '@ant-design/icons';
+import { Header } from './components/Header/Header';
 
 const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'));
 const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer'));
 
 const { SubMenu } = Menu;
-const { Header, Content, Footer, Sider } = Layout;
+const { Content, Footer, Sider } = Layout;
 
 const DialogsSuspense = withSuspense(DialogsContainer)
 const ProfileSuspense = withSuspense(ProfileContainer)
@@ -40,7 +40,6 @@ type DispathPropsType = {
 
 class App extends Component<MapPropsType & DispathPropsType> {
   catchAllUnhandledErrors = (event: PromiseRejectionEvent) => {
-    // alert("Something had gone wrong");
   };
 
   componentDidMount() {
@@ -61,14 +60,7 @@ class App extends Component<MapPropsType & DispathPropsType> {
 
     return (
       <Layout>
-        <Header className="header">
-          <div className="logo" />
-          <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']}>
-            <Menu.Item key="1">nav 1</Menu.Item>
-            <Menu.Item key="2">nav 2</Menu.Item>
-            <Menu.Item key="3">nav 3</Menu.Item>
-          </Menu>
-        </Header>
+        <Header />
         <Content style={{ padding: '0 50px' }}>
           <Breadcrumb style={{ margin: '16px 0' }}>
             <Breadcrumb.Item>Home</Breadcrumb.Item>
@@ -78,19 +70,25 @@ class App extends Component<MapPropsType & DispathPropsType> {
           <Layout className="site-layout-background" style={{ padding: '24px 0' }}>
             <Sider className="site-layout-background" width={200}>
               <Menu
-                mode="inline"
-                defaultSelectedKeys={['1']}
-                defaultOpenKeys={['sub1']}
+                mode='inline'
+                // defaultSelectedKeys={['1']}
+                // defaultOpenKeys={['sub1']}
                 style={{ height: '100%' }}
               >
-                <SubMenu key="sub1" icon={<UserOutlined />} title="subnav 1">
-                  <Menu.Item key="1">option1</Menu.Item>
-                  <Menu.Item key="2">option2</Menu.Item>
+                <SubMenu key="sub1" icon={<UserOutlined />} title="My Profile">
+                  <Menu.Item key="1"><Link className={css.link} to="/profile">
+                    Profile
+                  </Link></Menu.Item>
+                  <Menu.Item key="2"><Link className={css.link} to="/dialogs">
+                    Messages
+                  </Link></Menu.Item>
                   <Menu.Item key="3">option3</Menu.Item>
                   <Menu.Item key="4">option4</Menu.Item>
                 </SubMenu>
-                <SubMenu key="sub2" icon={<LaptopOutlined />} title="subnav 2">
-                  <Menu.Item key="5">option5</Menu.Item>
+                <SubMenu key="sub2" icon={<LaptopOutlined />} title="Developers">
+                  <Menu.Item key="5"><Link className={css.link} to="/developers">
+                    Developers
+                  </Link></Menu.Item>
                   <Menu.Item key="6">option6</Menu.Item>
                   <Menu.Item key="7">option7</Menu.Item>
                   <Menu.Item key="8">option8</Menu.Item>
@@ -115,7 +113,7 @@ class App extends Component<MapPropsType & DispathPropsType> {
                 />
 
                 <Route
-                  path="/users"
+                  path="/developers"
                   render={() => <UserPage pageTitle={'react typescript'} />}
                 />
 
