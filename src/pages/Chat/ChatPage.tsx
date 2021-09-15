@@ -1,4 +1,4 @@
-import { FC } from "react"
+import { FC, useEffect } from "react"
 // import React from 'react'
 
 const ws = new WebSocket('wss://social-network.samuraijs.com/handlers/ChatHandler.ashx')
@@ -11,6 +11,14 @@ const ChatPage: FC = () => {
 }
 
 const Chat: FC = () => {
+
+  useEffect(() => {
+    ws.addEventListener('message', (e) => {
+      console.log(JSON.parse(e.data))
+    })
+
+  }, [])
+
   return <div>
     <Messages />
     <AddMessagesForm />
