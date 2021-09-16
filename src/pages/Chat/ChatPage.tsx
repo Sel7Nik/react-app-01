@@ -22,7 +22,7 @@ const Chat: FC = () => {
 
   return <div>
     <Messages />
-    <AddMessagesForm />
+    <AddMessageForm />
   </div>
 }
 const Messages: FC = () => {
@@ -41,7 +41,6 @@ const Messages: FC = () => {
 }
 
 
-
 const Message: FC<{ message: ChatMessageType }> = ({ message }) => {
 
   return <div>
@@ -53,13 +52,23 @@ const Message: FC<{ message: ChatMessageType }> = ({ message }) => {
   </div>
 }
 
-const AddMessagesForm: FC = () => {
+const AddMessageForm: FC = () => {
+  const [message, setMessage] = useState('')
+
+  const sendMessage = () => {
+    if (!message) {
+      return
+    }
+    wsChanel.send(message)
+    setMessage('')
+  }
+
   return <div>
     <div>
-      <textarea>text message</textarea>
+      <textarea onChange={(ev) => setMessage(ev.currentTarget.value)} value={message}></textarea>
     </div>
     <div>
-      <button> S E N D </button>
+      <button onClick={sendMessage}> S E N D </button>
     </div>
   </div>
 }
