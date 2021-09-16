@@ -1,7 +1,6 @@
 import { FC, useEffect, useState } from "react"
 // import React from 'react'
 
-const wsChanel = new WebSocket('wss://social-network.samuraijs.com/handlers/ChatHandler.ashx')
 
 export type ChatMessageType = {
   message: string
@@ -9,31 +8,44 @@ export type ChatMessageType = {
   userId: number
   userName: string
 }
+
 const ChatPage: FC = () => {
-  // export const ChatPage: React.FC=()=>{
   return <div>
     <Chat />
   </div>
 }
 
 const Chat: FC = () => {
+  const [wsChannel, setWsChannel] = useState<WebSocket | null>(null)
 
+  useEffect(() => {
+    function createChannel() {
+      setWsChannel(new WebSocket('wss://social-network.samuraijs.com/handlers/ChatHandler.ashx'))
+    }
+    createChannel();
+  }, [])
 
+  useEffect(() => {
+    wsChannel?.addEventListener('close', () => {
+      console.log('CLOSE WS')
+    })
+  }, [wsChannel])
 
   return <div>
-    <Messages />
-    <AddMessageForm />
+    <Messages wsChannel={wsChannel} />
+    <AddMessageForm wsChannel={wsChannel} />
   </div>
 }
-const Messages: FC = () => {
+const Messages: FC<{ wsChannel: WebSocket | null }> = ({ wsChannel }) => {
   const [messages, setMessages] = useState<ChatMessageType[]>([])
 
   useEffect(() => {
-    wsChanel.addEventListener('message', (ev: MessageEvent) => {
+
+    wsChannel?.addEventListener('message', (ev: MessageEvent) => {
       let newMessages = JSON.parse(ev.data)
       setMessages((prevMessages) => [...prevMessages, ...newMessages])
     })
-  }, [])
+  }, [wsChannel])
 
   return <div style={{ height: "480px", overflowY: 'auto' }}>
     {messages.map((mes, index) => <Message message={mes} key={index} />)}
@@ -52,22 +64,22 @@ const Message: FC<{ message: ChatMessageType }> = ({ message }) => {
   </div>
 }
 
-const AddMessageForm: FC = () => {
+const AddMessageForm: FC<{ wsChannel: WebSocket | null }> = ({ wsChannel }) => {
   const [message, setMessage] = useState('')
   const [readyStatus, setReadyStatus] = useState<'panding' | 'ready'>('panding')
 
 
   useEffect(() => {
-    wsChanel.addEventListener('open', () => {
+    wsChannel?.addEventListener('open', () => {
       setReadyStatus('ready')
     })
-  }, [])
+  }, [wsChannel])
 
   const sendMessage = () => {
     if (!message) {
       return
     }
-    wsChanel.send(message)
+    wsChannel?.send(message)
     setMessage('')
   }
 
@@ -76,7 +88,7 @@ const AddMessageForm: FC = () => {
       <textarea onChange={(ev) => setMessage(ev.currentTarget.value)} value={message}></textarea>
     </div>
     <div>
-      <button disabled={readyStatus !== 'ready'} onClick={sendMessage}> S E N D </button>
+      <button disabled={wsChannel === null || readyStatus !== 'ready'} onClick={sendMessage}> S E N D </button>
     </div>
   </div>
 }
