@@ -26,16 +26,19 @@ const Chat: FC = () => {
     }
 
     function createChannel() {
-      if (ws !== null) {
-        ws.removeEventListener('close', closeHandler)
-      }
 
+      ws?.removeEventListener('close', closeHandler)
+      ws?.close()
 
       ws = new WebSocket('wss://social-network.samuraijs.com/handlers/ChatHandler.ashx')
       ws.addEventListener('close', closeHandler)
       setWsChannel(ws)
     }
     createChannel();
+    return () => {
+      ws.removeEventListener('close', closeHandler)
+      ws.close()
+    }
   }, [])
 
   useEffect(() => {
@@ -51,18 +54,20 @@ const Messages: FC<{ wsChannel: WebSocket | null }> = ({ wsChannel }) => {
   const [messages, setMessages] = useState<ChatMessageType[]>([])
 
   useEffect(() => {
-
-    wsChannel?.addEventListener('message', (ev: MessageEvent) => {
+    let messageHandler = (ev: MessageEvent) => {
       let newMessages = JSON.parse(ev.data)
       setMessages((prevMessages) => [...prevMessages, ...newMessages])
-    })
+    }
+    wsChannel?.addEventListener('message', messageHandler)
+    return () => {
+      wsChannel?.removeEventListener('message', messageHandler)
+    }
   }, [wsChannel])
 
   return <div style={{ height: "480px", overflowY: 'auto' }}>
     {messages.map((mes, index) => <Message message={mes} key={index} />)}
   </div>
 }
-
 
 const Message: FC<{ message: ChatMessageType }> = ({ message }) => {
 
@@ -81,9 +86,13 @@ const AddMessageForm: FC<{ wsChannel: WebSocket | null }> = ({ wsChannel }) => {
 
 
   useEffect(() => {
-    wsChannel?.addEventListener('open', () => {
+    let openHandler = () => {
       setReadyStatus('ready')
-    })
+    }
+    wsChannel?.addEventListener('open', openHandler)
+    return () => {
+      wsChannel?.removeEventListener('open', openHandler)
+    }
   }, [wsChannel])
 
   const sendMessage = () => {
