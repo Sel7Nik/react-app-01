@@ -1,7 +1,7 @@
 import { FC, useEffect, useState } from "react"
 // import React from 'react'
 
-const ws = new WebSocket('wss://social-network.samuraijs.com/handlers/ChatHandler.ashx')
+const wsChanel = new WebSocket('wss://social-network.samuraijs.com/handlers/ChatHandler.ashx')
 
 export type ChatMessageType = {
   message: string
@@ -29,13 +29,14 @@ const Messages: FC = () => {
   const [messages, setMessages] = useState<ChatMessageType[]>([])
 
   useEffect(() => {
-    ws.addEventListener('message', (e) => {
-      setMessages(JSON.parse(e.data))
+    wsChanel.addEventListener('message', (ev: MessageEvent) => {
+      let newMessages = JSON.parse(ev.data)
+      setMessages((prevMessages) => [...prevMessages, ...newMessages])
     })
   }, [])
 
   return <div style={{ height: "480px", overflowY: 'auto' }}>
-    {messages.map((m, index) => <Message message={m} key={index} />)}
+    {messages.map((mes, index) => <Message message={mes} key={index} />)}
   </div>
 }
 
