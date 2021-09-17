@@ -2,12 +2,7 @@ import { FC, useEffect, useState } from "react"
 // import React from 'react'
 
 
-export type ChatMessageType = {
-  message: string
-  photo: string
-  userId: number
-  userName: string
-}
+
 
 const ChatPage: FC = () => {
   return <div>
