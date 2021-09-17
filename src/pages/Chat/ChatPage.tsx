@@ -2,8 +2,6 @@ import { FC, useEffect, useState } from "react"
 // import React from 'react'
 
 
-
-
 const ChatPage: FC = () => {
   return <div>
     <Chat />
@@ -19,6 +17,7 @@ const Chat: FC = () => {
     const closeHandler = () => {
       setTimeout(createChannel, 3000)
     }
+
 
     function createChannel() {
 
